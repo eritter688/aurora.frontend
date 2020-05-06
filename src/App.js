@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button'
 import AuroraNavBar from "./components/navbar/NavBar";
 import NavBar from "react-bootstrap/Navbar";
+import DashboardContainer from "./pages/dashboard";
 
 const uname = "eritter688@gmail.com";
 const pswd = "22890501";
@@ -12,13 +13,15 @@ const handleClick = () => login(uname, pswd);
 
 class App extends Component {
 
-
     render() {
         return (
-            <div className="App">1
+            <div className="App">
                 <header className="App-header">
                     <AuroraNavBar/>
                 </header>
+                <body style={{paddingTop: "5rem", backgroundColor: "coral"}}>
+                <DashboardContainer/>
+                </body>
             </div>
         );
     }

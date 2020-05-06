@@ -11,7 +11,7 @@ export default class AuroraNavBar extends Component {
 
     loggedIn = () => {
 
-        let value = 0;
+        let value = 1;
 
         return value ?
             // Authenticated Right Hand Side
