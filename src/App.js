@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import LoginForm from './components/loginForm';
-import currentAuth from './components/loginForm'
-import { useSelector, useDispatch } from 'react-redux';
-import {selectCount} from "./features/counter/counterSlice";
 import Button from 'react-bootstrap/Button'
+import AuroraNavBar from "./components/navbar/NavBar";
+import NavBar from "react-bootstrap/Navbar";
 
 const uname = "eritter688@gmail.com";
 const pswd = "22890501";
@@ -15,16 +11,13 @@ const pswd = "22890501";
 const handleClick = () => login(uname, pswd);
 
 class App extends Component {
-  
+
 
     render() {
         return (
-            <div className="App">
+            <div className="App">1
                 <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <Button onClick={handleClick}>
-                      'LOGIN'
-                    </Button>
+                    <AuroraNavBar/>
                 </header>
             </div>
         );
@@ -50,9 +43,20 @@ function login(email, password) {
 export default App;
 
 
+// WORKING LOGO + CLICKABLE BUTTON
 
-
-
+// render() {
+//     return (
+//         <div className="App">
+//             <header className="App-header">
+//                 <img src={logo} className="App-logo" alt="logo"/>
+//                 <Button onClick={handleClick}>
+//                     'LOGIN'
+//                 </Button>
+//             </header>
+//         </div>
+//     );
+// }
 
 
 // function App() {
