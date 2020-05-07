@@ -3,6 +3,12 @@ import Button from 'react-bootstrap/Button'
 import React, {Component} from 'react';
 import login from '../services/authService'
 
+/*
+TODO:
+Auth not found -> bad email/password combo
+Forgot email.
+Forgot password.
+*/
 export default class LoginForm extends Component {
 
     constructor(props) {
