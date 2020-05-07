@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button'
 import AuroraNavBar from "./components/navbar/NavBar";
-import NavBar from "react-bootstrap/Navbar";
-import DashboardContainer from "./pages/dashboard";
 import LoginContainer from "./pages/login";
+//import {userService} from "./services/authService";
+//import {userService} from "./services/authService";
+//import login from "./pages/login";
+//import login from "./services/authService";
 
-const uname = "eritter688@gmail.com";
-const pswd = "22890501";
-
-const handleClick = () => login(uname, pswd);
 
 class App extends Component {
 
@@ -29,25 +26,31 @@ class App extends Component {
 
 }
 
-function login(email, password) {
-  
-  var response;
-  
-    const requestOptions = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({email, password})
-    }
-
-    response = fetch('http://localhost:8000/api/v1/token/auth/', requestOptions);
-    console.log(response);
-    return;
-}
+// function login(email, password) {
+//
+//   var response;
+//
+//     const requestOptions = {
+//         method: 'POST',
+//         headers: {'Content-Type': 'application/json'},
+//         body: JSON.stringify({email, password})
+//     }
+//
+//     response = fetch('http://localhost:8000/api/v1/token/auth/', requestOptions);
+//     console.log(response);
+//     return;
+// }
 
 export default App;
 
+// const uname = "eritter688@gmail.com";
+// const pswd = "22890501";
+
 
 // WORKING LOGO + CLICKABLE BUTTON
+
+//const handleClick = () => login(uname, pswd);
+
 
 // render() {
 //     return (
