@@ -14,8 +14,8 @@ export default class LoginForm extends Component {
     }
 
     inputHandler = (event) => {
-        let key = event.target.name;
-        let value = event.target.value;
+        const key = event.target.name;
+        const value = event.target.value;
         this.setState({[key]: value});
     }
 
@@ -31,12 +31,15 @@ export default class LoginForm extends Component {
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email"
                                   name="email"
+                                  autoFocus
+                                  required
                                   onChange={this.inputHandler}/>
                 </Form.Group>
                 <Form.Group controlId="loginFormPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password"
                                   name="password"
+                                  required
                                   onChange={this.inputHandler}/>
                 </Form.Group>
                 <Button variant="primary" type="submit">
