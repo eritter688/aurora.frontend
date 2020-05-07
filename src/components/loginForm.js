@@ -43,7 +43,7 @@ export default class LoginForm extends Component {
                     LOGIN
                 </Button>
             </Form>
-        )
+        );
     }
 
 }
