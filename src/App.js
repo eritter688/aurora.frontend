@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button'
 import AuroraNavBar from "./components/navbar/NavBar";
 import NavBar from "react-bootstrap/Navbar";
 import DashboardContainer from "./pages/dashboard";
+import LoginContainer from "./pages/login";
 
 const uname = "eritter688@gmail.com";
 const pswd = "22890501";
@@ -19,8 +20,8 @@ class App extends Component {
                 <header className="App-header">
                     <AuroraNavBar/>
                 </header>
-                <body style={{paddingTop: "5rem", backgroundColor: "coral"}}>
-                <DashboardContainer/>
+                <body style={{paddingTop: "5rem", backgroundColor: "cornsilk"}}>
+                <LoginContainer/>
                 </body>
             </div>
         );

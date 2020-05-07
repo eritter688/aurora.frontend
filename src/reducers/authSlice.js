@@ -3,7 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 export const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        auth: 'NO AUTH',
+        isFetching: false,
+        isAuthenticated: false,
+        access_token: null,
+        refresh_token: null,
     },
     reducers: {
         success: state => {
