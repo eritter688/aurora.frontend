@@ -1,3 +1,5 @@
+const apiURL = 'http://localhost:8000/api/v1/';
+
 function login(email, password) {
 
     const requestOptions = {
@@ -5,9 +7,6 @@ function login(email, password) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({email, password})
     };
-
-    // TODO Move to some sort of project config.
-    const apiURL = 'http://localhost:8000/api/v1/';
 
     // TODO Handle anything other than 200OK!
     fetch(apiURL + "token/auth/", requestOptions)
@@ -18,6 +17,26 @@ function login(email, password) {
             localStorage.setItem("refreshToken", data.refresh);
         });
 
+    getUserData();
+
+}
+
+function getUserData() {
+
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'JWT ' + localStorage.getItem("accessToken"),
+        },
+    };
+
+    fetch(apiURL + "user/1/", requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            localStorage.setItem("email", data.email);
+        })
+
 }
 
 function refresh() {
@@ -26,8 +45,9 @@ function refresh() {
 
 function logout() {
     localStorage.setItem("isAuthenticated", false);
+    localStorage.removeItem("email");
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
 }
 
-export default {login, refresh, logout};
+export default {login, refresh, getUserData, logout};

@@ -9,22 +9,31 @@ import './NavBar.css'
 
 export default class AuroraNavBar extends Component {
 
-    loggedIn = () => {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isAuthenticated: false,
+        };
+    };
 
-        let value = 1;
+    authenticated = () => {
+        return this.state.isAuthenticated === true ?
+            this.renderAuth() : this.renderNotAuth();
+    }
 
-        return value ?
-            // Authenticated Right Hand Side
+    renderAuth = () => {
+        return (
             <Nav className={"ml-auto"}>
                 <NavDropdown title="Welcome: eritter688@gmail.com" id={"drop"}>
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                     <NavDropdown.Item>Logout</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
+        );
+    }
 
-            :
-
-            // Not Authenticated Right Hand Side
+    renderNotAuth = () => {
+        return (
             <Nav className={"ml-auto"}>
                 <Nav.Item>
                     <Nav.Link href={""}>Register</Nav.Link>
@@ -33,6 +42,7 @@ export default class AuroraNavBar extends Component {
                     <Nav.Link href={""}>Log In</Nav.Link>
                 </Nav.Item>
             </Nav>
+        );
     }
 
     render() {
@@ -56,7 +66,7 @@ export default class AuroraNavBar extends Component {
                             <Nav.Link href={""}>Contact</Nav.Link>
                         </NavItem>
                     </Nav>
-                    {this.loggedIn()}
+                    {this.authenticated()}
                 </NavBar.Collapse>
             </NavBar>
         )
