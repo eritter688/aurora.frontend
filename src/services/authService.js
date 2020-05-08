@@ -5,26 +5,29 @@
 
 function login(email, password) {
 
-    console.log("we got here!")
-    console.log(email)
-    console.log(password)
-
     const requestOptions = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({email, password})
     };
 
+    // TODO Move to some sort of project config.
     const apiURL = 'http://localhost:8000/api/v1/';
 
-    //return fetch(apiURL + "token/auth/", requestOptions)
+    // TODO Handle anything other than 200OK!
     fetch(apiURL + "token/auth/", requestOptions)
-    // .then(handleResponse)
-    // .then()
+        .then(response => response.json())
+        .then(data => {
+            localStorage.setItem("accessToken", data.access);
+            localStorage.setItem("refreshToken", data.refresh);
+        })
+
 }
 
 function logout() {
-
+    console.log("logout!!");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
 }
 
 // function handleResponse(response) {
@@ -45,4 +48,4 @@ function logout() {
 //     });
 // }
 
-export default login;
+export default {login, logout};

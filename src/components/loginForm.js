@@ -1,7 +1,7 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import React, {Component} from 'react';
-import login from '../services/authService'
+import auth from '../services/authService'
 
 /*
 TODO:
@@ -27,7 +27,7 @@ export default class LoginForm extends Component {
 
     submitHandler = (event) => {
         event.preventDefault(); // why?
-        login(this.state.email, this.state.password);
+        auth.login(this.state.email, this.state.password);
     }
 
     render() {
@@ -48,6 +48,8 @@ export default class LoginForm extends Component {
                                   required
                                   onChange={this.inputHandler}/>
                 </Form.Group>
+                {/*// TODO*/}
+                {/*// This isn't firing on phone/tablet.*/}
                 <Button variant="primary" type="submit">
                     LOGIN
                 </Button>
