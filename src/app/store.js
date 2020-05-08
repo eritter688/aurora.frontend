@@ -1,10 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
 import authReducer from '../reducers/authSlice'
 
-export default configureStore({
+const store = configureStore({
   reducer: {
     counter: counterReducer,
     auth: authReducer,
   },
 });
+
+export default store;

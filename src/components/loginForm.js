@@ -53,6 +53,10 @@ export default class LoginForm extends Component {
                 <Button variant="primary" type="submit">
                     LOGIN
                 </Button>
+                <Button variant="danger" onClick={auth.logout}>
+                    LOGOUT
+                </Button>
+
             </Form>
         );
     }
