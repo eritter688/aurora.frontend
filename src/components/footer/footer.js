@@ -37,9 +37,6 @@ export default function AuroraFooter() {
             </Nav>
             <Nav className={"ml-auto"}>
                 <NavItem>
-                    <Nav.Link href={""}>C 2020 Aurora LLC.</Nav.Link>
-                </NavItem>
-                <NavItem>
                     <Nav.Link href={""}>Twitter</Nav.Link>
                 </NavItem>
                 <NavItem>
@@ -47,6 +44,9 @@ export default function AuroraFooter() {
                 </NavItem>
                 <NavItem>
                     <Nav.Link href={""}>{'<'}/{'>'}</Nav.Link>
+                </NavItem>
+                <NavItem>
+                    <Nav.Link eventKey={"disabled"} disabled>C 2020 Aurora LLC.</Nav.Link>
                 </NavItem>
             </Nav>
         </NavBar>

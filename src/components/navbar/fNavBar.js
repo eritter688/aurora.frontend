@@ -3,7 +3,6 @@ import {useSelector} from 'react-redux';
 import NavBar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav"
 import NavbarBrand from "react-bootstrap/NavbarBrand";
-import NavItem from "react-bootstrap/NavItem";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavBar.css'
@@ -34,7 +33,7 @@ function renderNoAuth() {
 }
 
 export default function FAuroraNavBar() {
-    const renderAuth = useSelector(isAuthenticated);
+    const authenticated = useSelector(isAuthenticated);
 
     const navBarStyle = {
         fontVariant: "all-small-caps",
@@ -52,18 +51,7 @@ export default function FAuroraNavBar() {
             <NavbarBrand href={""}>Aurora</NavbarBrand>
             <NavBar.Toggle aria-controls="responsive-navbar-nav"/>
             <NavBar.Collapse id="responsive-navbar-nav">
-                <Nav className={"mr-auto"}>
-                    <NavItem>
-                        <Nav.Link href={""}>Home</Nav.Link>
-                    </NavItem>
-                    <NavItem>
-                        <Nav.Link href={""}>About Us</Nav.Link>
-                    </NavItem>
-                    <NavItem>
-                        <Nav.Link href={""}>Contact</Nav.Link>
-                    </NavItem>
-                </Nav>
-                {renderAuth ? renderAuth() : renderNoAuth()}
+                {authenticated ? renderAuth() : renderNoAuth()}
             </NavBar.Collapse>
         </NavBar>
     );
