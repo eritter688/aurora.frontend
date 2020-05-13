@@ -36,8 +36,15 @@ function renderNoAuth() {
 export default function FAuroraNavBar() {
     const renderAuth = useSelector(isAuthenticated);
 
+    const navBarStyle = {
+        fontVariant: "all-small-caps",
+        borderBottomStyle: "solid",
+        borderWidth: "1px",
+        borderColor: "lightgray",
+    }
+
     return (
-        <NavBar style={{fontVariant: "all-small-caps"}}
+        <NavBar style={navBarStyle}
                 fixed={"top"}
                 bg={"light"}
                 variant={"light"}
