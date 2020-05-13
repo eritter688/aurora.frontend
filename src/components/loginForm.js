@@ -31,33 +31,63 @@ export default class LoginForm extends Component {
     }
 
     render() {
-        return (
-            <Form onSubmit={this.submitHandler}>
-                <Form.Group controlId="loginFormEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email"
-                                  name="email"
-                                  autoFocus
-                                  required
-                                  onChange={this.inputHandler}/>
-                </Form.Group>
-                <Form.Group controlId="loginFormPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password"
-                                  name="password"
-                                  required
-                                  onChange={this.inputHandler}/>
-                </Form.Group>
-                {/*// TODO*/}
-                {/*// This isn't firing on phone/tablet.*/}
-                <Button variant="primary" type="submit">
-                    LOGIN
-                </Button>
-                <Button variant="danger" onClick={auth.logout}>
-                    LOGOUT
-                </Button>
 
-            </Form>
+        const loginFormStyle = {
+            fontVariant: "all-small-caps",
+
+            width: "45%",
+            height: "35%",
+
+            borderStyle: "solid",
+            borderWidth: "1px",
+            borderColor: "lightgray",
+        };
+
+        const inputAreaStyle = {
+            padding: "5%",
+        };
+
+        const buttonPaddingStyle = {
+            paddingLeft: "5%",
+            paddingRight: "5%",
+        };
+
+        return (
+            <div style={loginFormStyle}>
+                <div style={inputAreaStyle}>
+                    <Form onSubmit={this.submitHandler}>
+                        <Form.Group controlId="loginFormEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email"
+                                          name="email"
+                                          autoFocus
+                                          required
+                                          onChange={this.inputHandler}
+                                          style={inputAreaStyle}/>
+                        </Form.Group>
+                        <a href={""}>Forgot Email?</a>
+                        <Form.Group controlId="loginFormPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password"
+                                          name="password"
+                                          required
+                                          onChange={this.inputHandler}
+                                          style={inputAreaStyle}/>
+                        </Form.Group>
+                        <a href={""}>Forgot Password?</a>
+                        <p/>
+                        {/*// TODO*/}
+                        {/*// This isn't firing on phone/tablet.*/}
+                        <Button style={buttonPaddingStyle} variant="primary" type="submit">
+                            LOGIN
+                        </Button>
+                        <Button style={buttonPaddingStyle} variant="danger" onClick={auth.logout}>
+                            LOGOUT
+                        </Button>
+
+                    </Form>
+                </div>
+            </div>
         );
     }
 
