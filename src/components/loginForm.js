@@ -78,10 +78,10 @@ export default class LoginForm extends Component {
                         <p/>
                         {/*// TODO*/}
                         {/*// This isn't firing on phone/tablet.*/}
-                        <Button style={buttonPaddingStyle} variant="primary" type="submit">
+                        <Button variant="primary" type="submit">
                             LOGIN
                         </Button>
-                        <Button style={buttonPaddingStyle} variant="danger" onClick={auth.logout}>
+                        <Button variant="danger" onClick={auth.logout}>
                             LOGOUT
                         </Button>
 

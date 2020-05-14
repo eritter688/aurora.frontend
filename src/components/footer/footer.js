@@ -5,8 +5,12 @@ import NavItem from "react-bootstrap/NavItem";
 
 export default function AuroraFooter() {
 
+    // TODO
+    // On phone, this styles into vertical, taking up a lot of screen
+    // real estate.
     const auroraFooterStyle = {
-        fontVariant: "all-small-caps",
+        fontVariant: "small-caps",
+        fontSize: ".65em",
         borderTopStyle: "solid",
         borderWidth: "1px",
         borderColor: "lightgray",
@@ -17,7 +21,7 @@ export default function AuroraFooter() {
                 fixed={"bottom"}
                 bg={"light"}
                 variant={"light"}
-                expand={"md"}>
+                expand={"sm"}>
             <Nav className={"mr-auto"}>
                 <NavItem>
                     <Nav.Link href={""}>About</Nav.Link>
@@ -37,10 +41,10 @@ export default function AuroraFooter() {
             </Nav>
             <Nav className={"ml-auto"}>
                 <NavItem>
-                    <Nav.Link href={""}>Twitter</Nav.Link>
+                    <Nav.Link href={""}>T</Nav.Link>
                 </NavItem>
                 <NavItem>
-                    <Nav.Link href={""}>Facebook</Nav.Link>
+                    <Nav.Link href={""}>F</Nav.Link>
                 </NavItem>
                 <NavItem>
                     <Nav.Link href={""}>{'<'}/{'>'}</Nav.Link>
