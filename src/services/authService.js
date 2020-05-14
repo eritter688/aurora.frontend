@@ -44,8 +44,6 @@ function refresh() {
 }
 
 function Logout() {
-    localStorage.setItem("isAuthenticated", false);
-    localStorage.removeItem("email");
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
 }

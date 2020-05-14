@@ -5,42 +5,14 @@ import NavbarBrand from "react-bootstrap/NavbarBrand";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavBar.css'
-import {useSelector} from "react-redux";
-import {isAuthenticated} from "../../reducers/authSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {isAuthenticated, LOGOUT} from "../../reducers/authSlice";
+import auth from '../../services/authService'
 
-// const dispatch = useDispatch();
-//
-// function logoutHandler() {
-//     logout();
-//     dispatch(LOGOUT);
-// }
-
-function renderAuth() {
-    return (
-        <Nav className={"ml-auto"}>
-            <NavDropdown title="Welcome: eritter688@gmail.com" id={"drop"}>
-                <NavDropdown.Item>Profile</NavDropdown.Item>
-                <NavDropdown.Item>Logout</NavDropdown.Item>
-            </NavDropdown>
-        </Nav>
-    );
-}
-
-function renderNoAuth() {
-    return (
-        <Nav className={"ml-auto"}>
-            <Nav.Item>
-                <Nav.Link href={""}>Register</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link href={""}>Log In</Nav.Link>
-            </Nav.Item>
-        </Nav>
-    );
-}
 
 export default function FAuroraNavBar() {
     const authenticated = useSelector(isAuthenticated);
+    const dispatch = useDispatch();
     // const authenticated = 1;
 
     const navBarStyle = {
@@ -48,6 +20,36 @@ export default function FAuroraNavBar() {
         borderBottomStyle: "solid",
         borderWidth: "1px",
         borderColor: "lightgray",
+    }
+
+    const logoutHandler = (event) => {
+        event.preventDefault();
+        auth.logout();
+        dispatch(LOGOUT());
+    }
+
+    const renderAuth = () => {
+        return (
+            <Nav className={"ml-auto"}>
+                <NavDropdown title="Welcome: eritter688@gmail.com" id={"drop"}>
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                    <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+                </NavDropdown>
+            </Nav>
+        );
+    }
+
+    const renderNoAuth = () => {
+        return (
+            <Nav className={"ml-auto"}>
+                <Nav.Item>
+                    <Nav.Link href={""}>Register</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Nav.Link href={""}>Log In</Nav.Link>
+                </Nav.Item>
+            </Nav>
+        );
     }
 
     return (
