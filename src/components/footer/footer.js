@@ -9,8 +9,8 @@ export default function AuroraFooter() {
     // On phone, this styles into vertical, taking up a lot of screen
     // real estate.
     const auroraFooterStyle = {
-        fontVariant: "small-caps",
-        fontSize: ".65em",
+        fontVariant: "all-small-caps",
+        fontSize: ".80em",
         borderTopStyle: "solid",
         borderWidth: "1px",
         borderColor: "lightgray",
@@ -22,37 +22,43 @@ export default function AuroraFooter() {
                 bg={"light"}
                 variant={"light"}
                 expand={"sm"}>
-            <Nav className={"mr-auto"}>
-                <NavItem>
-                    <Nav.Link href={""}>About</Nav.Link>
-                </NavItem>
-                <NavItem>
-                    <Nav.Link href={""}>Terms</Nav.Link>
-                </NavItem>
-                <NavItem>
-                    <Nav.Link href={""}>Privacy</Nav.Link>
-                </NavItem>
-                <NavItem>
-                    <Nav.Link href={""}>Contact/Report Bug</Nav.Link>
-                </NavItem>
-                <NavItem>
-                    <Nav.Link href={""}>Help</Nav.Link>
-                </NavItem>
-            </Nav>
-            <Nav className={"ml-auto"}>
-                <NavItem>
-                    <Nav.Link href={""}>T</Nav.Link>
-                </NavItem>
-                <NavItem>
-                    <Nav.Link href={""}>F</Nav.Link>
-                </NavItem>
-                <NavItem>
-                    <Nav.Link href={""}>{'<'}/{'>'}</Nav.Link>
-                </NavItem>
-                <NavItem>
-                    <Nav.Link eventKey={"disabled"} disabled>C 2020 Aurora LLC.</Nav.Link>
-                </NavItem>
-            </Nav>
+            <NavBar.Toggle aria-controls="responsive-navbar-nav-left"/>
+            <NavBar.Collapse id="responsive-navbar-nav-left">
+                <Nav className={"mr-auto"}>
+                    <NavItem>
+                        <Nav.Link href={""}>About</Nav.Link>
+                    </NavItem>
+                    <NavItem>
+                        <Nav.Link href={""}>Terms</Nav.Link>
+                    </NavItem>
+                    <NavItem>
+                        <Nav.Link href={""}>Privacy</Nav.Link>
+                    </NavItem>
+                    <NavItem>
+                        <Nav.Link href={""}>Contact/Report Bug</Nav.Link>
+                    </NavItem>
+                    <NavItem>
+                        <Nav.Link href={""}>Help</Nav.Link>
+                    </NavItem>
+                </Nav>
+            </NavBar.Collapse>
+            <NavBar.Toggle aria-controls="responsive-navbar-nav-right"/>
+            <NavBar.Collapse id="responsive-navbar-nav-right">
+                <Nav className={"ml-auto"}>
+                    <NavItem>
+                        <Nav.Link href={""}>T</Nav.Link>
+                    </NavItem>
+                    <NavItem>
+                        <Nav.Link href={""}>F</Nav.Link>
+                    </NavItem>
+                    <NavItem>
+                        <Nav.Link href={""}>{'<'}/{'>'}</Nav.Link>
+                    </NavItem>
+                    <NavItem>
+                        <Nav.Link eventKey={"disabled"} disabled>C 2020 Aurora LLC.</Nav.Link>
+                    </NavItem>
+                </Nav>
+            </NavBar.Collapse>
         </NavBar>
     );
 

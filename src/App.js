@@ -16,13 +16,20 @@ class App extends Component {
     }
 
     render() {
+
+        const bodyStyle = {
+            paddingTop: "5rem",
+            paddingBottom: "5rem",
+            backgroundColor: "cornsilk"
+        }
+
         return (
             <div className="App">
                 <header className="App-header">
                     {/*<AuroraNavBar/>*/}
                     <FAuroraNavBar/>
                 </header>
-                <body style={{paddingTop: "5rem", backgroundColor: "cornsilk"}}>
+                <body style={bodyStyle}>
                 <LoginContainer/>
                 </body>
                 <footer className="App-footer">
