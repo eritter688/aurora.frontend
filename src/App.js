@@ -19,7 +19,7 @@ class App extends Component {
         const bodyStyle = {
             paddingTop: "5rem",
             paddingBottom: "5rem",
-            backgroundColor: "lightsteelblue",
+            // backgroundColor: "lightsteelblue",
         }
 
         return (
@@ -28,7 +28,7 @@ class App extends Component {
                     <AuroraNavBar/>
                 </header>
                 <body style={bodyStyle}>
-                {Router()}
+                <Router/>
                 </body>
                 <footer className="App-footer">
                     <AuroraFooter/>

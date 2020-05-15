@@ -16,7 +16,6 @@ function login(dispatch, email, password) {
     fetch(apiURL + "token/auth/", requestOptions)
         .then(response => response.json())
         .then(data => {
-            localStorage.setItem("isAuthenticated", true);
             localStorage.setItem("accessToken", data.access);
             localStorage.setItem("refreshToken", data.refresh);
         });

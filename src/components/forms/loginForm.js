@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import React, {useState} from 'react';
 import auth from '../../services/authService'
 import {useDispatch} from 'react-redux'
+import {useHistory} from 'react-router-dom'
 
 const formContainerStyle = {
     fontVariant: "all-small-caps",
@@ -36,6 +37,7 @@ const buttonContainerStyle = {
 export default function LoginForm() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -43,6 +45,7 @@ export default function LoginForm() {
     const submitHandler = (event) => {
         event.preventDefault();
         auth.login(dispatch, email, password);
+        history.push("/dashboard/");
     };
 
     return (
