@@ -1,7 +1,7 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import React, {useState} from 'react';
-import auth from '../services/authService'
+import auth from '../../services/authService'
 import {useDispatch} from 'react-redux'
 
 const formContainerStyle = {

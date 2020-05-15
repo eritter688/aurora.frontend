@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AuroraNavBar from "./components/navbar/fNavBar";
+import AuroraNavBar from "./components/navbar/NavBar";
 import LoginContainer from "./pages/login";
 import AuroraFooter from "./components/footer/footer";
 

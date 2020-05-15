@@ -1,38 +1,43 @@
-import React, {Component} from "react";
+import React from 'react';
 import NavBar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav"
 import NavbarBrand from "react-bootstrap/NavbarBrand";
-import NavItem from "react-bootstrap/NavItem";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './NavBar.css'
+import {useDispatch, useSelector} from "react-redux";
+import {isAuthenticated} from "../../reducers/authSlice";
+import auth from '../../services/authService'
 
-export default class AuroraNavBar extends Component {
+const navBarStyle = {
+    fontVariant: "all-small-caps",
+    borderBottomStyle: "solid",
+    borderWidth: "1px",
+    borderColor: "lightgray",
+};
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            isAuthenticated: false,
-        };
+export default function AuroraNavBar() {
+
+    const dispatch = useDispatch();
+
+    const authenticated = useSelector(isAuthenticated);
+
+    const logoutHandler = (event) => {
+        event.preventDefault();
+        auth.logout(dispatch);
     };
 
-    authenticated = () => {
-        return this.state.isAuthenticated === true ?
-            this.renderAuth() : this.renderNotAuth();
-    }
-
-    renderAuth = () => {
+    const renderAuth = () => {
         return (
             <Nav className={"ml-auto"}>
                 <NavDropdown title="Welcome: eritter688@gmail.com" id={"drop"}>
                     <NavDropdown.Item>Profile</NavDropdown.Item>
-                    <NavDropdown.Item>Logout</NavDropdown.Item>
+                    <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
         );
-    }
+    };
 
-    renderNotAuth = () => {
+    const renderNoAuth = () => {
         return (
             <Nav className={"ml-auto"}>
                 <Nav.Item>
@@ -43,32 +48,19 @@ export default class AuroraNavBar extends Component {
                 </Nav.Item>
             </Nav>
         );
-    }
-
-    render() {
-        return (
-            <NavBar style={{fontVariant: "all-small-caps"}}
-                    fixed={"top"}
-                    bg={"light"}
-                    variant={"light"}
-                    expand={"md"}>
-                <NavbarBrand href={""}>Aurora</NavbarBrand>
-                <NavBar.Toggle aria-controls="responsive-navbar-nav"/>
-                <NavBar.Collapse id="responsive-navbar-nav">
-                    <Nav className={"mr-auto"}>
-                        <NavItem>
-                            <Nav.Link href={""}>Home</Nav.Link>
-                        </NavItem>
-                        <NavItem>
-                            <Nav.Link href={""}>About Us</Nav.Link>
-                        </NavItem>
-                        <NavItem>
-                            <Nav.Link href={""}>Contact</Nav.Link>
-                        </NavItem>
-                    </Nav>
-                    {this.authenticated()}
-                </NavBar.Collapse>
-            </NavBar>
-        )
     };
+
+    return (
+        <NavBar style={navBarStyle}
+                fixed={"top"}
+                bg={"light"}
+                variant={"light"}
+                expand={"md"}>
+            <NavbarBrand href={""}>Aurora</NavbarBrand>
+            <NavBar.Toggle aria-controls="responsive-navbar-nav"/>
+            <NavBar.Collapse id="responsive-navbar-nav">
+                {authenticated ? renderAuth() : renderNoAuth()}
+            </NavBar.Collapse>
+        </NavBar>
+    );
 }
