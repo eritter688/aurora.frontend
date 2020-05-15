@@ -15,21 +15,23 @@ const formContainerStyle = {
     borderStyle: "solid",
     borderWidth: "1px",
     borderColor: "lightgray",
+
+    backgroundColor: "ghostwhite",
 };
 
 const formStyle = {
     padding: "3%",
-}
+};
 
 const formGroupStyle = {
     paddingLeft: "5%",
     paddingRight: "5%",
-}
+};
 
 const buttonContainerStyle = {
     float: "right",
     paddingBottom: "3%",
-}
+};
 
 export default function LoginForm() {
 

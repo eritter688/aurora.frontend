@@ -4,27 +4,27 @@ import Nav from "react-bootstrap/Nav"
 import NavbarBrand from "react-bootstrap/NavbarBrand";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './NavBar.css'
 import {useDispatch, useSelector} from "react-redux";
 import {isAuthenticated} from "../../reducers/authSlice";
 import auth from '../../services/authService'
 
+const navBarStyle = {
+    fontVariant: "all-small-caps",
+    borderBottomStyle: "solid",
+    borderWidth: "1px",
+    borderColor: "lightgray",
+};
 
-export default function FAuroraNavBar() {
-    const authenticated = useSelector(isAuthenticated);
+export default function AuroraNavBar() {
+
     const dispatch = useDispatch();
 
-    const navBarStyle = {
-        fontVariant: "all-small-caps",
-        borderBottomStyle: "solid",
-        borderWidth: "1px",
-        borderColor: "lightgray",
-    }
+    const authenticated = useSelector(isAuthenticated);
 
     const logoutHandler = (event) => {
         event.preventDefault();
         auth.logout(dispatch);
-    }
+    };
 
     const renderAuth = () => {
         return (
@@ -35,7 +35,7 @@ export default function FAuroraNavBar() {
                 </NavDropdown>
             </Nav>
         );
-    }
+    };
 
     const renderNoAuth = () => {
         return (
@@ -48,7 +48,7 @@ export default function FAuroraNavBar() {
                 </Nav.Item>
             </Nav>
         );
-    }
+    };
 
     return (
         <NavBar style={navBarStyle}

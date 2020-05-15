@@ -7,11 +7,10 @@ export default class LoginContainer extends Component {
     render() {
 
         const loginContainerStyle = {
-            width: "100%",
-            height: "100%",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            paddingTop: "2%",
         };
 
         return (
