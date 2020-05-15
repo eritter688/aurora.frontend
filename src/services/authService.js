@@ -1,12 +1,16 @@
+import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT} from "../reducers/authSlice";
+
 const apiURL = 'http://localhost:8000/api/v1/';
 
-function Login(email, password) {
+function login(dispatch, email, password) {
 
     const requestOptions = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({email, password})
     };
+
+    dispatch(LOGIN_REQUEST());
 
     // TODO Handle anything other than 200OK!
     fetch(apiURL + "token/auth/", requestOptions)
@@ -17,35 +21,17 @@ function Login(email, password) {
             localStorage.setItem("refreshToken", data.refresh);
         });
 
-    // getUserData();
+    dispatch(LOGIN_SUCCESS());
+}
+
+function refresh(dispatch) {
 
 }
 
-function getUserData() {
-
-    const requestOptions = {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'JWT ' + localStorage.getItem("accessToken"),
-        },
-    };
-
-    fetch(apiURL + "user/1/", requestOptions)
-        .then(response => response.json())
-        .then(data => {
-            localStorage.setItem("email", data.email);
-        })
-
-}
-
-function refresh() {
-
-}
-
-function Logout() {
+function logout(dispatch) {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
+    dispatch(LOGOUT());
 }
 
-export default {login: Login, refresh, getUserData, logout: Logout};
+export default {login, refresh, logout};

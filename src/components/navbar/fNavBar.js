@@ -6,14 +6,13 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavBar.css'
 import {useDispatch, useSelector} from "react-redux";
-import {isAuthenticated, LOGOUT} from "../../reducers/authSlice";
+import {isAuthenticated} from "../../reducers/authSlice";
 import auth from '../../services/authService'
 
 
 export default function FAuroraNavBar() {
     const authenticated = useSelector(isAuthenticated);
     const dispatch = useDispatch();
-    // const authenticated = 1;
 
     const navBarStyle = {
         fontVariant: "all-small-caps",
@@ -24,8 +23,7 @@ export default function FAuroraNavBar() {
 
     const logoutHandler = (event) => {
         event.preventDefault();
-        auth.logout();
-        dispatch(LOGOUT());
+        auth.logout(dispatch);
     }
 
     const renderAuth = () => {
