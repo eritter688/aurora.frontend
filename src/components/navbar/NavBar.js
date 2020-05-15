@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useDispatch, useSelector} from "react-redux";
 import {isAuthenticated} from "../../reducers/authSlice";
 import auth from '../../services/authService'
+import {useHistory} from 'react-router-dom'
+
 
 const navBarStyle = {
     fontVariant: "all-small-caps",
@@ -18,12 +20,14 @@ const navBarStyle = {
 export default function AuroraNavBar() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const authenticated = useSelector(isAuthenticated);
 
     const logoutHandler = (event) => {
         event.preventDefault();
         auth.logout(dispatch);
+        history.push("/");
     };
 
     const renderAuth = () => {

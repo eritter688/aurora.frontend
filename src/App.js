@@ -19,6 +19,7 @@ class App extends Component {
         const bodyStyle = {
             paddingTop: "5rem",
             paddingBottom: "5rem",
+            backgroundImage: "url(./aurora.jpg)",
             // backgroundColor: "lightsteelblue",
         }
 

@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import {Route, Switch,} from "react-router-dom";
 import IndexContainer from "../pages";
 import LoginContainer from "../pages/login";
-import DashboardContainer from "../pages/dashboard";
+import DashboardContainer from "../pages/secure/dashboard";
 import {isAuthenticated} from "../reducers/authSlice";
 
 
