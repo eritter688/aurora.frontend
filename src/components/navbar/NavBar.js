@@ -44,7 +44,7 @@ export default function AuroraNavBar() {
                     <Nav.Link href={""}>Register</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link href={""}>Log In</Nav.Link>
+                    <Nav.Link href={"/login"}>Log In</Nav.Link>
                 </Nav.Item>
             </Nav>
         );

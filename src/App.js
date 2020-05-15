@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuroraNavBar from "./components/navbar/NavBar";
-import LoginContainer from "./pages/login";
 import AuroraFooter from "./components/footer/footer";
-
+import Router from "./router/router";
 
 class App extends Component {
 
@@ -29,7 +28,7 @@ class App extends Component {
                     <AuroraNavBar/>
                 </header>
                 <body style={bodyStyle}>
-                <LoginContainer/>
+                {Router()}
                 </body>
                 <footer className="App-footer">
                     <AuroraFooter/>
