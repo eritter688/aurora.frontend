@@ -1,9 +1,9 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import React, {useState} from 'react';
-import auth from '../../services/authService'
 import {useDispatch} from 'react-redux'
 import {useHistory} from 'react-router-dom'
+import {asyncLogin} from '../../reducers/authSlice'
 
 const formContainerStyle = {
     fontVariant: "all-small-caps",
@@ -44,9 +44,14 @@ export default function LoginForm() {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        auth.login(dispatch, history, email, password);
-        console.log("PUSH NOW!");
-        history.push("/dashboard/");
+        const creds = {
+            email: email,
+            password: password,
+        }
+        dispatch(asyncLogin(creds)).then(() => {
+            console.log("PUSH!");
+            history.push("/dashboard/");
+        });
     };
 
     return (

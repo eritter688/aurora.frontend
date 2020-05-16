@@ -4,8 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AuroraNavBar from "./components/navbar/NavBar";
 import AuroraFooter from "./components/footer/footer";
 import Router from "./router/router";
-import {useSelector} from "react-redux";
-import {isAuthenticated} from "./reducers/authSlice";
 
 const bodyStyle = {
     paddingTop: "5rem",
@@ -15,8 +13,6 @@ const bodyStyle = {
 }
 
 export default function App() {
-
-    const authenticated = useSelector(isAuthenticated);
 
     return (
         <div className="App">

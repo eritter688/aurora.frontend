@@ -4,8 +4,7 @@ import Nav from "react-bootstrap/Nav"
 import NavbarBrand from "react-bootstrap/NavbarBrand";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useDispatch, useSelector} from "react-redux";
-import {isAuthenticated} from "../../reducers/authSlice";
+import {useDispatch} from "react-redux";
 import auth from '../../services/authService'
 import {useHistory} from 'react-router-dom'
 
@@ -22,7 +21,6 @@ export default function AuroraNavBar() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const authenticated = useSelector(isAuthenticated);
 
     const logoutHandler = (event) => {
         event.preventDefault();
@@ -63,7 +61,7 @@ export default function AuroraNavBar() {
             <NavbarBrand href={""}>Aurora</NavbarBrand>
             <NavBar.Toggle aria-controls="responsive-navbar-nav"/>
             <NavBar.Collapse id="responsive-navbar-nav">
-                {authenticated ? renderAuth() : renderNoAuth()}
+                {localStorage.getItem('currentUser') ? renderAuth() : renderNoAuth()}
             </NavBar.Collapse>
         </NavBar>
     );

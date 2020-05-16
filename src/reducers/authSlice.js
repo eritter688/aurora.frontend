@@ -1,44 +1,43 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {api} from '../axios/axios'
+
+export const asyncLogin = createAsyncThunk(
+    'asyncLogin',
+    async (creds, thunkAPI) => {
+        if (localStorage.getItem('currentUser')) {
+            console.log("ALREADY LOGGED IN!!");
+            return;
+        }
+        const response = await api.post("token/auth/", creds);
+        console.log(response.data);
+        return response.data;
+    }
+)
 
 export const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        isAuthenticated: false,
         isFetching: false,
-        accessToken: null,
-        refreshToken: null,
     },
     reducers: {
-        LOGIN_REQUEST: state => {
-            state.isAuthenticated = false;
-            state.isFetching = true;
-            state.accessToken = null;
-            state.refreshToken = null;
-        },
-        LOGIN_SUCCESS: state => {
-            state.isAuthenticated = true;
-            state.isFetching = false;
-            state.accessToken = localStorage.getItem("accessToken");
-            state.refreshToken = localStorage.getItem("refreshToken");
-        },
-        LOGIN_FAILURE: state => {
-            state.isAuthenticated = false;
-            state.isFetching = false;
-            state.accessToken = null;
-            state.refreshToken = null;
-        },
         LOGOUT: state => {
-            state.isAuthenticated = false;
             state.isFetching = false;
-            state.accessToken = null;
-            state.refreshToken = null;
         },
     },
+    extraReducers: {
+        [asyncLogin.pending]: (state, action) => {
+            state.isFetching = true;
+        },
+        [asyncLogin.fulfilled]: (state, action) => {
+            state.isFetching = false;
+        },
+        [asyncLogin.rejected]: (state, action) => {
+            state.isFetching = false;
+        },
+    }
 });
 
 export const {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT} = authSlice.actions;
-
-export const isAuthenticated = state => state.auth.isAuthenticated;
 
 export default authSlice.reducer;
 
