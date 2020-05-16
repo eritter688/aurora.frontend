@@ -4,40 +4,52 @@ import {api} from '../axios/axios'
 export const asyncLogin = createAsyncThunk(
     'asyncLogin',
     async (creds, thunkAPI) => {
-        if (localStorage.getItem('currentUser')) {
-            console.log("ALREADY LOGGED IN!!");
-            return;
-        }
+        console.log("LOGIN");
         const response = await api.post("token/auth/", creds);
         console.log(response.data);
-        return response.data;
+        localStorage.setItem('accessToken', response.data['access']);
+        localStorage.setItem('refreshToken', response.data['refresh']);
+        localStorage.setItem('currentUser', 'TEST');
+    }
+)
+
+export const asyncLogout = createAsyncThunk(
+    'asyncLogout',
+    async (obj, thunkAPI) => {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('currentUser');
     }
 )
 
 export const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        isFetching: false,
+        busy: false,
     },
-    reducers: {
-        LOGOUT: state => {
-            state.isFetching = false;
-        },
-    },
+    reducers: {},
     extraReducers: {
         [asyncLogin.pending]: (state, action) => {
-            state.isFetching = true;
+            state.busy = true;
         },
         [asyncLogin.fulfilled]: (state, action) => {
-            state.isFetching = false;
+            state.busy = false;
         },
         [asyncLogin.rejected]: (state, action) => {
-            state.isFetching = false;
+            state.busy = false;
+            console.log(action);
+        },
+        [asyncLogout.pending]: (state, action) => {
+            state.busy = true;
+        },
+        [asyncLogout.fulfilled]: (state, action) => {
+            state.busy = false;
+        },
+        [asyncLogout.rejected]: (state, action) => {
+            state.busy = false;
         },
     }
 });
-
-export const {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT} = authSlice.actions;
 
 export default authSlice.reducer;
 

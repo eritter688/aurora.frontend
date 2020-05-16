@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import NavBar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav"
 import NavbarBrand from "react-bootstrap/NavbarBrand";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useDispatch} from "react-redux";
-import auth from '../../services/authService'
 import {useHistory} from 'react-router-dom'
+import {asyncLogout} from "../../reducers/authSlice";
 
 
 const navBarStyle = {
@@ -20,11 +20,14 @@ export default function AuroraNavBar() {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const [auth, setAuth] = useState(!!localStorage.getItem('currentUser') || false);
 
 
     const logoutHandler = (event) => {
         event.preventDefault();
-        auth.logout(dispatch);
+        dispatch(asyncLogout()).then(() => {
+            // history.push("/");
+        });
         history.push("/");
     };
 
