@@ -22,12 +22,12 @@ export default function Router() {
 
     return (
         <Switch>
-            <PrivateRoute auth={"auth"} path={"/dashboard/"} component={DashboardContainer}/>
-            <Route path={"/about/"} component={AboutContainer}/>
-            <Route path={"/login/"} component={LoginContainer}/>
-            <Route path={"/terms/"} component={TermsContainer}/>
-            <Route path={"/"} component={IndexContainer}/>
-            <Redirect push to={"/"}/>
+            <PrivateRoute auth={"auth"} exact path={"/dashboard/"} component={DashboardContainer}/>
+            <Route exact path={"/about/"} component={AboutContainer}/>
+            <Route exact path={"/login/"} component={LoginContainer}/>
+            <Route exact path={"/terms/"} component={TermsContainer}/>
+            <Route exact path={"/"} component={IndexContainer}/>
+            <Redirect push to="/"/>
         </Switch>
     );
 }

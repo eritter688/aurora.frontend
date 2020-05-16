@@ -44,8 +44,9 @@ export default function LoginForm() {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        auth.login(dispatch, email, password);
-        history.push("/dashboard/");
+        auth.login(dispatch, history, email, password);
+        console.log("PUSH NOW!");
+        history.push("/about/");
     };
 
     return (
@@ -72,6 +73,7 @@ export default function LoginForm() {
                     <Button variant="primary" type="submit">
                         LOGIN
                     </Button>
+                    {/*<Button variant={"danger"} onClick={() => history.push("/dashboard/")}>PUSH</Button>*/}
                 </div>
             </Form>
         </div>

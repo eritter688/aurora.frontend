@@ -46,12 +46,6 @@ export default function AuroraFooter() {
             <NavBar.Collapse id="responsive-navbar-nav-right">
                 <Nav className={"ml-auto"}>
                     <NavItem>
-                        <Nav.Link href={""}>T</Nav.Link>
-                    </NavItem>
-                    <NavItem>
-                        <Nav.Link href={""}>F</Nav.Link>
-                    </NavItem>
-                    <NavItem>
                         <Nav.Link href={""}>{'<'}/{'>'}</Nav.Link>
                     </NavItem>
                     <NavItem>
