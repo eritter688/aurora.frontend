@@ -1,43 +1,35 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AuroraNavBar from "./components/navbar/NavBar";
 import AuroraFooter from "./components/footer/footer";
 import Router from "./router/router";
+import {useSelector} from "react-redux";
+import {isAuthenticated} from "./reducers/authSlice";
 
-class App extends Component {
-
-    componentDidMount() {
-        //localStorage.setItem("isAuthenticated", false);
-        // check for current user session
-        // and load into secure space if so
-        // otherwise, do nothing...
-    }
-
-    render() {
-
-        const bodyStyle = {
-            paddingTop: "5rem",
-            paddingBottom: "5rem",
-            backgroundImage: "url(./aurora.jpg)",
-            // backgroundColor: "lightsteelblue",
-        }
-
-        return (
-            <div className="App">
-                <header className="App-header">
-                    <AuroraNavBar/>
-                </header>
-                <body style={bodyStyle}>
-                <Router/>
-                </body>
-                <footer className="App-footer">
-                    <AuroraFooter/>
-                </footer>
-            </div>
-        );
-    }
-
+const bodyStyle = {
+    paddingTop: "5rem",
+    paddingBottom: "5rem",
+    backgroundImage: "url(./aurora.jpg)",
+    // backgroundColor: "lightsteelblue",
 }
 
-export default App;
+export default function App() {
+
+    const authenticated = useSelector(isAuthenticated);
+
+    return (
+        <div className="App">
+            <div className="App-header">
+                <AuroraNavBar/>
+            </div>
+            <div style={bodyStyle}>
+                <Router/>
+            </div>
+            <div className="App-footer">
+                <AuroraFooter/>
+            </div>
+        </div>
+
+    );
+}

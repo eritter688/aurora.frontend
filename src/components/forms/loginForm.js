@@ -46,7 +46,7 @@ export default function LoginForm() {
         event.preventDefault();
         auth.login(dispatch, history, email, password);
         console.log("PUSH NOW!");
-        history.push("/about/");
+        history.push("/dashboard/");
     };
 
     return (
