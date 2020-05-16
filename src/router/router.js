@@ -1,39 +1,33 @@
 import React from "react";
 import {useSelector} from "react-redux";
-import {Route, Switch,} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import IndexContainer from "../pages";
 import LoginContainer from "../pages/login";
 import DashboardContainer from "../pages/secure/dashboard";
 import {isAuthenticated} from "../reducers/authSlice";
+import AboutContainer from "../pages/about";
+import TermsContainer from "../pages/terms";
 
+const PrivateRoute = ({auth: authenticated, component: Component, ...rest}) => (
+    <Route {...rest} render={(props) => (
+        authenticated === true
+            ? <Component {...props} />
+            : <Redirect to='/login/'/>
+    )}/>
+);
 
 export default function Router() {
 
-    const authenticated = useSelector(isAuthenticated);
-
-    const authRoutes = () => {
-        return (
-            <Route path={"/dashboard/"} component={DashboardContainer}/>
-        );
-    };
-
-    const noAuthRoutes = () => {
-        return (
-            <Route path={"/login/"} component={LoginContainer}/>
-        );
-    };
-
-    const defaultRoute = () => {
-        return (
-            <Route path={"/"} component={IndexContainer}/>
-        );
-    };
+    const auth = useSelector(isAuthenticated);
 
     return (
         <Switch>
-            {authenticated === true && authRoutes()}
-            {noAuthRoutes()}
-            {defaultRoute()}
+            <PrivateRoute auth={"auth"} path={"/dashboard/"} component={DashboardContainer}/>
+            <Route path={"/about/"} component={AboutContainer}/>
+            <Route path={"/login/"} component={LoginContainer}/>
+            <Route path={"/terms/"} component={TermsContainer}/>
+            <Route path={"/"} component={IndexContainer}/>
+            <Redirect push to={"/"}/>
         </Switch>
     );
 }

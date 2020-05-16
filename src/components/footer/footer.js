@@ -26,19 +26,19 @@ export default function AuroraFooter() {
             <NavBar.Collapse id="responsive-navbar-nav-left">
                 <Nav className={"mr-auto"}>
                     <NavItem>
-                        <Nav.Link href={""}>About</Nav.Link>
+                        <Nav.Link href={"/about/"}>About</Nav.Link>
                     </NavItem>
                     <NavItem>
-                        <Nav.Link href={""}>Terms</Nav.Link>
+                        <Nav.Link href={"/terms/"}>Terms</Nav.Link>
                     </NavItem>
                     <NavItem>
-                        <Nav.Link href={""}>Privacy</Nav.Link>
+                        <Nav.Link href={"/privacy/"}>Privacy</Nav.Link>
                     </NavItem>
                     <NavItem>
-                        <Nav.Link href={""}>Contact/Report Bug</Nav.Link>
+                        <Nav.Link href={"/bug/"}>Contact/Report Bug</Nav.Link>
                     </NavItem>
                     <NavItem>
-                        <Nav.Link href={""}>Help</Nav.Link>
+                        <Nav.Link href={"/help/"}>Help</Nav.Link>
                     </NavItem>
                 </Nav>
             </NavBar.Collapse>
