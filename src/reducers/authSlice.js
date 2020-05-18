@@ -37,7 +37,6 @@ export const authSlice = createSlice({
         },
         [asyncLogin.rejected]: (state, action) => {
             state.busy = false;
-            console.log(action);
         },
         [asyncLogout.pending]: (state, action) => {
             state.busy = true;

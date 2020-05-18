@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import NavBar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav"
 import NavbarBrand from "react-bootstrap/NavbarBrand";
@@ -16,12 +16,10 @@ const navBarStyle = {
     borderColor: "lightgray",
 };
 
-export default function AuroraNavBar() {
+export default function AuroraNavBar(props) {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const [auth, setAuth] = useState(!!localStorage.getItem('currentUser') || false);
-
 
     const logoutHandler = (event) => {
         event.preventDefault();
@@ -64,7 +62,7 @@ export default function AuroraNavBar() {
             <NavbarBrand href={""}>Aurora</NavbarBrand>
             <NavBar.Toggle aria-controls="responsive-navbar-nav"/>
             <NavBar.Collapse id="responsive-navbar-nav">
-                {localStorage.getItem('currentUser') ? renderAuth() : renderNoAuth()}
+                {props.auth ? renderAuth() : renderNoAuth()}
             </NavBar.Collapse>
         </NavBar>
     );
