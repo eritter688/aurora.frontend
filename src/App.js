@@ -7,7 +7,6 @@ import Router from "./router/router";
 import authService from './services/authService';
 import {useDispatch} from "react-redux";
 
-
 const bodyStyle = {
     paddingTop: "5rem",
     paddingBottom: "5rem",

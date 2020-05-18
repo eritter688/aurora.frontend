@@ -4,9 +4,22 @@ import {asyncRefresh} from '../reducers/authSlice'
 const hasAccessToken = () => {
     return !!localStorage.getItem('accessToken');
 };
+const getAccessToken = () => {
+    return localStorage.getItem('accessToken');
+};
+const hasValidAccessToken = () => {
+    return hasAccessToken() && !hasTokenExpired(getAccessToken());
+}
+
 const hasRefreshToken = () => {
     return !!localStorage.getItem('refreshToken');
 };
+const getRefreshToken = () => {
+    return localStorage.getItem('refreshToken');
+};
+const hasValidRefreshToken = () => {
+    return hasRefreshToken() && !hasTokenExpired(getRefreshToken());
+}
 
 const hasTokenExpired = (token) => {
     const currentTime = Math.round(new Date().getTime() / 1000);
@@ -40,4 +53,14 @@ const checkAuth = (dispatch) => {
 }
 
 
-export default {checkAuth, hasAuthTokens};
+export default {
+    hasAccessToken,
+    getAccessToken,
+    hasValidAccessToken,
+    hasRefreshToken,
+    getRefreshToken,
+    hasValidRefreshToken,
+    hasTokenExpired,
+    hasAuthTokens,
+    checkAuth,
+};
