@@ -4,8 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AuroraNavBar from "./components/navbar/NavBar";
 import AuroraFooter from "./components/footer/footer";
 import Router from "./router/router";
-import {useDispatch} from "react-redux";
-import {useHistory} from 'react-router-dom'
 import authService from './services/authService';
 
 
@@ -17,14 +15,11 @@ const bodyStyle = {
 
 export default function App(props) {
 
-    const dispatch = useDispatch();
-    const history = useHistory();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [banana, setBanana] = useState(true);
 
     useEffect(() => {
         setIsAuthenticated(authService.checkAuth());
-    })
+    }, [isAuthenticated])
 
     return (
         <div className={"App"}>

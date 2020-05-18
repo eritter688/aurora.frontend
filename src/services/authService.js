@@ -10,7 +10,6 @@ const hasAuthTokens = () => {
 };
 
 const checkAuth = () => {
-    console.log('checking auth!');
     return hasAuthTokens();
 }
 
