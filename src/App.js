@@ -5,6 +5,7 @@ import AuroraNavBar from "./components/navbar/NavBar";
 import AuroraFooter from "./components/footer/footer";
 import Router from "./router/router";
 import authService from './services/authService';
+import {useDispatch} from "react-redux";
 
 
 const bodyStyle = {
@@ -15,11 +16,12 @@ const bodyStyle = {
 
 export default function App(props) {
 
+    const dispatch = useDispatch();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
-        setIsAuthenticated(authService.checkAuth());
-    }, [isAuthenticated])
+        setIsAuthenticated(authService.checkAuth(dispatch));
+    }, []);
 
     return (
         <div className={"App"}>

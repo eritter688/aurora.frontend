@@ -4,30 +4,29 @@ import {api} from '../axios/axios'
 export const asyncLogin = createAsyncThunk(
     'asyncLogin',
     async (creds, thunkAPI) => {
-        console.log("LOGIN");
-        const response = await api.post("token/auth/", {email: creds.email, password: creds.password});
-        console.log(response.data);
+        const response = await api.post("token/auth/", creds);
+        // console.log(response);
         localStorage.setItem('accessToken', response.data['access']);
         localStorage.setItem('refreshToken', response.data['refresh']);
-        localStorage.setItem('currentUser', 'TEST');
-        console.log("ASYNC PUSH!");
-        creds.history.push("/dashboard/");
     }
 );
 
 export const asyncRefresh = createAsyncThunk(
     'asyncRefresh',
-    async (obj, thunkAPI) => {
-
+    async (rTokenObj, thunkAPI) => {
+        const response = await api.post("token/refresh/", rTokenObj);
+        // console.log(response);
+        localStorage.setItem('accessToken', response.data['access']);
     }
 );
 
-export const asyncVerify = createAsyncThunk(
-    'asyncVerify',
-    async (obj, thunkAPI) => {
-
-    }
-);
+// export const asyncVerify = createAsyncThunk(
+//     'asyncVerify',
+//     async (tokenObj, thunkAPI) => {
+//         const response = await api.post("token/verify/", tokenObj);
+//         console.log(response);
+//     }
+// );
 
 export const asyncLogout = createAsyncThunk(
     'asyncLogout',
