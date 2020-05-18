@@ -6,12 +6,12 @@ import AuroraFooter from "./components/footer/footer";
 import Router from "./router/router";
 import {useDispatch} from "react-redux";
 import {useHistory} from 'react-router-dom'
+import authService from './services/authService';
 
 
 const bodyStyle = {
     paddingTop: "5rem",
     paddingBottom: "5rem",
-    // backgroundImage: "url(./aurora.jpg)",
     backgroundColor: "lightsteelblue",
 }
 
@@ -20,21 +20,17 @@ export default function App(props) {
     const dispatch = useDispatch();
     const history = useHistory();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [banana, setBanana] = useState(true);
 
     useEffect(() => {
-        // setIsAuthenticated(false);
-        console.log("effect fired!");
-        // are there any tokens at all?
-        // is the access token still valid?
-        // is the refresh token still valid?
-        // refresh
+        setIsAuthenticated(authService.checkAuth());
     })
 
     return (
         <div className={"App"}>
             <AuroraNavBar auth={isAuthenticated}/>
             <div style={bodyStyle}>
-                <Router/>
+                <Router auth={isAuthenticated}/>
             </div>
             <AuroraFooter/>
         </div>

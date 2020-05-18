@@ -5,13 +5,29 @@ export const asyncLogin = createAsyncThunk(
     'asyncLogin',
     async (creds, thunkAPI) => {
         console.log("LOGIN");
-        const response = await api.post("token/auth/", creds);
+        const response = await api.post("token/auth/", {email: creds.email, password: creds.password});
         console.log(response.data);
         localStorage.setItem('accessToken', response.data['access']);
         localStorage.setItem('refreshToken', response.data['refresh']);
         localStorage.setItem('currentUser', 'TEST');
+        console.log("ASYNC PUSH!");
+        creds.history.push("/dashboard/");
     }
-)
+);
+
+export const asyncRefresh = createAsyncThunk(
+    'asyncRefresh',
+    async (obj, thunkAPI) => {
+
+    }
+);
+
+export const asyncVerify = createAsyncThunk(
+    'asyncVerify',
+    async (obj, thunkAPI) => {
+
+    }
+);
 
 export const asyncLogout = createAsyncThunk(
     'asyncLogout',
@@ -20,7 +36,7 @@ export const asyncLogout = createAsyncThunk(
         localStorage.removeItem('refreshToken');
         localStorage.removeItem('currentUser');
     }
-)
+);
 
 export const authSlice = createSlice({
     name: 'auth',

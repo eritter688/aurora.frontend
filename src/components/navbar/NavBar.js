@@ -24,9 +24,9 @@ export default function AuroraNavBar(props) {
     const logoutHandler = (event) => {
         event.preventDefault();
         dispatch(asyncLogout()).then(() => {
-            // history.push("/");
+            history.push("/");
         });
-        history.push("/");
+        // history.push("/");
     };
 
     const renderAuth = () => {

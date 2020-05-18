@@ -6,20 +6,20 @@ import DashboardContainer from "../pages/secure/dashboard";
 import AboutContainer from "../pages/about";
 import TermsContainer from "../pages/terms";
 
-function PrivateRoute({component: Component, ...rest}) {
+function PrivateRoute({auth: isAuthenticated, component: Component, ...rest}) {
     return (
         <Route {...rest} render={(props) => (
-            localStorage.getItem('currentUser')
+            {isAuthenticated}
                 ? <Component {...props}/>
                 : <Redirect to={{pathname: '/login/', state: {from: props.location}}}/>
         )}/>
     );
 }
 
-export default function Router() {
+export default function Router(props) {
     return (
         <Switch>
-            <PrivateRoute exact path={"/dashboard/"} component={DashboardContainer}/>
+            <PrivateRoute auth={props.auth} exact path={"/dashboard/"} component={DashboardContainer}/>
             <Route exact path={"/about/"} component={AboutContainer}/>
             <Route exact path={"/login/"} component={LoginContainer}/>
             <Route exact path={"/terms/"} component={TermsContainer}/>

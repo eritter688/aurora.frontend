@@ -47,10 +47,11 @@ export default function LoginForm() {
         const creds = {
             email: email,
             password: password,
+            history: history,
         }
         dispatch(asyncLogin(creds)).then(() => {
-            console.log("PUSH!");
-            history.push("/dashboard/");
+            // console.log("PUSH!");
+            // history.push("/dashboard/");
         });
     };
 
