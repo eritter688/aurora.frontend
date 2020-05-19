@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 import NavBar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav"
 import NavbarBrand from "react-bootstrap/NavbarBrand";
@@ -8,7 +8,6 @@ import {useDispatch} from "react-redux";
 import {useHistory} from 'react-router-dom'
 import {asyncLogout} from "../../reducers/authSlice";
 import authService from "../../services/authService";
-
 
 const navBarStyle = {
     fontVariant: "all-small-caps",
@@ -21,17 +20,24 @@ export default function AuroraNavBar(props) {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const [isAuthenticated, setIsAuthenticated] = useState(authService.hasAuthTokens());
+
+    useLayoutEffect(() => {
+        console.log("NavBar: useLayoutEffect");
+        setIsAuthenticated(authService.hasAuthTokens());
+    }, []);
 
     const logoutHandler = (event) => {
         event.preventDefault();
         dispatch(asyncLogout()).then(() => {
+            setIsAuthenticated(false);
             history.push("/");
-        });
-        // history.push("/");
+        })
     };
 
     const renderAuth = () => {
-        const email = authService.getUserEmail();
+        // const email = authService.getUserEmail();
+        const email = "eritter688@gmail.com";
         const title = "Welcome: " + email;
         return (
             <Nav className={"ml-auto"}>
@@ -65,8 +71,9 @@ export default function AuroraNavBar(props) {
             <NavbarBrand href={""}>Aurora</NavbarBrand>
             <NavBar.Toggle aria-controls="responsive-navbar-nav"/>
             <NavBar.Collapse id="responsive-navbar-nav">
-                {props.auth ? renderAuth() : renderNoAuth()}
+                {isAuthenticated ? renderAuth() : renderNoAuth()}
             </NavBar.Collapse>
         </NavBar>
     );
 }
+

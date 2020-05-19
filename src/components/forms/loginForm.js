@@ -64,7 +64,7 @@ export default function LoginForm() {
                                   autoFocus
                                   required
                                   onChange={event => setEmail(event.target.value)}/>
-                    <a href={""}>Forgot Email?</a>
+                    <a href={"/forgot/"}>Forgot Email?</a>
                 </Form.Group>
                 <Form.Group style={formGroupStyle} controlId="loginFormPassword">
                     <Form.Label>Password</Form.Label>
@@ -72,7 +72,7 @@ export default function LoginForm() {
                                   name="password"
                                   required
                                   onChange={event => setPassword(event.target.value)}/>
-                    <a href={""}>Forgot Password?</a>
+                    <a href={"/forgot/"}>Forgot Password?</a>
                 </Form.Group>
                 <div style={buttonContainerStyle}>
                     <Button variant="primary" type="submit">

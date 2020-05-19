@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AuroraNavBar from "./components/navbar/NavBar";
 import AuroraFooter from "./components/footer/footer";
 import Router from "./router/router";
 import authService from './services/authService';
 import {useDispatch} from "react-redux";
 import {api} from "./axios/axios";
+import {asyncLogin} from "./reducers/authSlice";
+import {useHistory} from "react-router-dom";
 
 const bodyStyle = {
     paddingTop: "5rem",
@@ -17,7 +18,8 @@ const bodyStyle = {
 export default function App(props) {
 
     const dispatch = useDispatch();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const history = useHistory();
+    const [isAuthenticated, setIsAuthenticated] = useState(authService.checkAuth(dispatch));
 
     useEffect(() => {
         setIsAuthenticated(authService.checkAuth(dispatch));
@@ -50,13 +52,24 @@ export default function App(props) {
         return Promise.reject(error);
     });
 
+    const loginHandler = (event, credentials) => {
+        event.preventDefault();
+        // const creds = {
+        //     email: "erittery688@gmail.com",
+        //     password: "22890501"
+        // }
+        dispatch(asyncLogin(credentials)).then(() => {
+            setIsAuthenticated(true);
+            console.log("LOGIN PUSH");
+            history.push("/dashboard/");
+        })
+    };
+
     return (
         <div className={"App"}>
-            <AuroraNavBar auth={isAuthenticated}/>
-            <div style={bodyStyle}>
-                <Router auth={isAuthenticated}/>
-            </div>
+            <Router/>
             <AuroraFooter/>
         </div>
     );
+
 }

@@ -51,7 +51,7 @@ const checkAuth = (dispatch) => {
     if (hasAuthTokens()) {
         let aToken = localStorage.getItem('accessToken');
         let rToken = localStorage.getItem('refreshToken');
-        console.log(jwt_decode(aToken));
+        // console.log(jwt_decode(aToken));
         // console.log(jwt_decode(rToken));
         console.log("Checking Access Expired: " + hasTokenExpired(aToken));
         console.log("Checking Refresh Expired: " + hasTokenExpired(rToken));
@@ -63,9 +63,9 @@ const checkAuth = (dispatch) => {
         //     console.log("Verifying New Access Token:");
         //     dispatch(asyncVerify({token: aToken}));
         // }
-        console.log(getUserID());
-        console.log(getUserEmail());
-        console.log(getUserName());
+        // console.log(getUserID());
+        // console.log(getUserEmail());
+        // console.log(getUserName());
     }
 
     return hasAuthTokens();

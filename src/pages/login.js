@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Page from "../components/page/page";
 import LoginForm from "../components/forms/loginForm";
 
 
@@ -14,9 +15,11 @@ export default class LoginContainer extends Component {
         };
 
         return (
-            <div style={loginContainerStyle}>
-                <LoginForm/>
-            </div>
-        )
-    }
-}
+            <Page>
+                <div style={loginContainerStyle}>
+                    <LoginForm/>
+                </div>
+            </Page>
+        );
+    };
+};

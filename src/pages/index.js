@@ -1,21 +1,12 @@
 import React, {Component} from 'react';
-
+import Page from "../components/page/page";
 
 export default class IndexContainer extends Component {
     render() {
         return (
-            <div>
-                <p>TOP LINE</p>
-                <p>FRONT PAGE</p>
-                <p>FRONT PAGE</p>
-                <p>FRONT PAGE</p>
-                <p>FRONT PAGE</p>
-                <p>FRONT PAGE</p>
-                <p>FRONT PAGE</p>
-                <p>FRONT PAGE</p>
-                <p>FRONT PAGE</p>
-                <p>FRONT PAGE</p>
-            </div>
-        )
-    }
-}
+            <Page>
+                <p>Index Page</p>
+            </Page>
+        );
+    };
+};
