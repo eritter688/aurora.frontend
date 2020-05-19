@@ -20,14 +20,6 @@ export const asyncRefresh = createAsyncThunk(
     }
 );
 
-// export const asyncVerify = createAsyncThunk(
-//     'asyncVerify',
-//     async (tokenObj, thunkAPI) => {
-//         const response = await api.post("token/verify/", tokenObj);
-//         console.log(response);
-//     }
-// );
-
 export const asyncLogout = createAsyncThunk(
     'asyncLogout',
     async (obj, thunkAPI) => {

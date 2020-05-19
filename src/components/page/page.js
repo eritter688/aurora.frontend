@@ -1,5 +1,5 @@
 import React from "react";
-import AuroraNavBar from "../navbar/NavBar";
+import Header from "../header/Header";
 
 const pageStyle = {};
 
@@ -12,7 +12,7 @@ const bodyStyle = {
 export default function Page(props) {
     return (
         <div style={pageStyle}>
-            <AuroraNavBar/>
+            <Header/>
             <div style={bodyStyle}>
                 {props.children}
             </div>

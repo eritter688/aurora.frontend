@@ -3,7 +3,7 @@ import NavBar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav"
 import NavItem from "react-bootstrap/NavItem";
 
-export default function AuroraFooter() {
+export default function Footer() {
 
     // TODO
     // On phone, this styles into vertical, taking up a lot of screen

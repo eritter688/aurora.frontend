@@ -1,37 +1,41 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AuroraFooter from "./components/footer/footer";
+import Footer from "./components/footer/footer";
 import Router from "./router/router";
 import authService from './services/authService';
 import {useDispatch} from "react-redux";
 import {api} from "./axios/axios";
 import JWTRefresher from "./components/refresh/refresh";
+import {asyncLogout} from "./reducers/authSlice";
+import {useHistory} from "react-router";
 
 export default function App(props) {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
-    useEffect(() => {
-        authService.checkAuth(dispatch);
-    }, []);
-
-    api.interceptors.request.use(function (config) {
+    // TODO
+    // 'JWT' should be in config file.
+    api.interceptors.request.use(request => {
         if (authService.hasValidAccessToken()) {
-            config.headers['Authorization'] = 'JWT ' + authService.getAccessToken();
+            request.headers['Authorization'] = `JWT ${authService.getAccessToken()}`;
         }
-        return config;
-    }, function (error) {
-        return Promise.reject(error);
+        return request;
     });
 
+    // TODO
+    // What if the user spams the request button?
+    // API should perhaps have a slice with busy flag?
     api.interceptors.response.use(function (response) {
         return response;
     }, function (error) {
         if (error.response.status === 401 && authService.hasValidRefreshToken()) {
             // dispatch async refresh and then refire original request with updated tokens
         } else if (error.response.status === 401 && !authService.hasValidRefreshToken()) {
-            // log out and cancel -> redirect to login page
+            dispatch(asyncLogout()).then(() => {
+                history.push("/login/");
+            })
         } else {
             // some other error/status not 2XX. custom app error handler ??
         }
@@ -42,7 +46,7 @@ export default function App(props) {
         <div className={"App"}>
             <JWTRefresher/>
             <Router/>
-            <AuroraFooter/>
+            <Footer/>
         </div>
     );
 

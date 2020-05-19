@@ -16,14 +16,13 @@ const navBarStyle = {
     borderColor: "lightgray",
 };
 
-export default function AuroraNavBar(props) {
+export default function Header(props) {
 
     const dispatch = useDispatch();
     const history = useHistory();
     const [isAuthenticated, setIsAuthenticated] = useState(authService.hasAuthTokens());
 
     useLayoutEffect(() => {
-        console.log("NavBar: useLayoutEffect");
         setIsAuthenticated(authService.hasAuthTokens());
     }, []);
 
@@ -76,4 +75,3 @@ export default function AuroraNavBar(props) {
         </NavBar>
     );
 }
-
