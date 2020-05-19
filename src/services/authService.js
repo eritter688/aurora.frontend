@@ -21,9 +21,25 @@ const hasValidRefreshToken = () => {
     return hasRefreshToken() && !hasTokenExpired(getRefreshToken());
 }
 
+const getUserID = () => {
+    return jwt_decode(getAccessToken()).user_id;
+}
+
+const getUserEmail = () => {
+    return jwt_decode(getAccessToken()).user.email;
+}
+
+const getUserName = () => {
+    const decoded = jwt_decode(getAccessToken());
+    return decoded.user.first_name + " " + decoded.user.last_name;
+}
+
 const hasTokenExpired = (token) => {
     const currentTime = Math.round(new Date().getTime() / 1000);
     const tokenExpiryTime = jwt_decode(token).exp;
+    if (isNaN(tokenExpiryTime) || tokenExpiryTime === null) {
+        return true;
+    }
     return (tokenExpiryTime < currentTime);
 }
 
@@ -35,7 +51,7 @@ const checkAuth = (dispatch) => {
     if (hasAuthTokens()) {
         let aToken = localStorage.getItem('accessToken');
         let rToken = localStorage.getItem('refreshToken');
-        // console.log(jwt_decode(aToken));
+        console.log(jwt_decode(aToken));
         // console.log(jwt_decode(rToken));
         console.log("Checking Access Expired: " + hasTokenExpired(aToken));
         console.log("Checking Refresh Expired: " + hasTokenExpired(rToken));
@@ -47,6 +63,9 @@ const checkAuth = (dispatch) => {
         //     console.log("Verifying New Access Token:");
         //     dispatch(asyncVerify({token: aToken}));
         // }
+        console.log(getUserID());
+        console.log(getUserEmail());
+        console.log(getUserName());
     }
 
     return hasAuthTokens();

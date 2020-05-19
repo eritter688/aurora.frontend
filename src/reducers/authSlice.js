@@ -33,7 +33,6 @@ export const asyncLogout = createAsyncThunk(
     async (obj, thunkAPI) => {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
-        localStorage.removeItem('currentUser');
     }
 );
 
