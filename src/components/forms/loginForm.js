@@ -49,11 +49,13 @@ export default function LoginForm() {
             password: password,
         }
         dispatch(asyncLogin(creds)).then(() => {
-            console.log("PUSH!");
             history.push("/dashboard/");
         });
     };
 
+    // TODO
+    // Google recommends that input elements should have autocomplete attributes.
+    // https://www.chromium.org/developers/design-documents/create-amazing-password-forms
     return (
         <div style={formContainerStyle}>
             <Form style={formStyle} onSubmit={submitHandler}>

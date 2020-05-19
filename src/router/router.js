@@ -1,6 +1,6 @@
 import React from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
-import authService from "../services/authService";
+import authService from "../services/tokenService";
 import IndexContainer from "../pages";
 import LoginContainer from "../pages/login";
 import DashboardContainer from "../pages/secure/dashboard";
@@ -9,7 +9,6 @@ import TermsContainer from "../pages/terms";
 
 
 function PrivateRoute({component: Component, ...rest}) {
-    console.log("Private Route Auth: " + authService.hasAuthTokens());
 
     if (authService.hasAuthTokens()) {
         return <Route {...rest} render={(props) => <Component {...props}/>}/>

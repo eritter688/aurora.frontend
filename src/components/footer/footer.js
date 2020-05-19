@@ -8,7 +8,7 @@ export default function Footer() {
     // TODO
     // On phone, this styles into vertical, taking up a lot of screen
     // real estate.
-    const auroraFooterStyle = {
+    const FooterStyle = {
         fontVariant: "all-small-caps",
         fontSize: ".80em",
         borderTopStyle: "solid",
@@ -17,7 +17,7 @@ export default function Footer() {
     };
 
     return (
-        <NavBar style={auroraFooterStyle}
+        <NavBar style={FooterStyle}
                 fixed={"bottom"}
                 bg={"light"}
                 variant={"light"}

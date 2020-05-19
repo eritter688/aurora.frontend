@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
 import {asyncRefresh} from "../../reducers/authSlice";
-import authService from "../../services/authService";
+import authService from "../../services/tokenService";
 
 // TODO
 // timeToRefresh should be in the config file.

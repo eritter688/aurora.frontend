@@ -21,19 +21,18 @@ const hasValidRefreshToken = () => {
     return hasRefreshToken() && !hasTokenExpired(getRefreshToken());
 }
 
+// TODO
+// Anything in here that is shown on UI or runs jwt_decode need to fail gracefully.
 const getUserID = () => {
     return jwt_decode(getAccessToken()).user_id;
 }
-
 const getUserEmail = () => {
     return jwt_decode(getAccessToken()).user.email;
 }
-
 const getUserName = () => {
     const decoded = jwt_decode(getAccessToken());
     return decoded.user.first_name + " " + decoded.user.last_name;
 }
-
 const hasTokenExpired = (token) => {
     const currentTime = Math.round(new Date().getTime() / 1000);
     const tokenExpiryTime = jwt_decode(token).exp;
@@ -53,10 +52,10 @@ const checkAuth = (dispatch) => {
         let rToken = localStorage.getItem('refreshToken');
         // console.log(jwt_decode(aToken));
         // console.log(jwt_decode(rToken));
-        console.log("Checking Access Expired: " + hasTokenExpired(aToken));
-        console.log("Checking Refresh Expired: " + hasTokenExpired(rToken));
+        // console.log("Checking Access Expired: " + hasTokenExpired(aToken));
+        // console.log("Checking Refresh Expired: " + hasTokenExpired(rToken));
         if (hasTokenExpired(aToken)) {
-            console.log("Refreshing Access Token:");
+            // console.log("Refreshing Access Token:");
             dispatch(asyncRefresh({refresh: rToken}));
         }
         // if (1) {

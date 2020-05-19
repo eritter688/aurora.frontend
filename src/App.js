@@ -3,7 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from "./components/footer/footer";
 import Router from "./router/router";
-import authService from './services/authService';
+import authService from './services/tokenService';
 import {useDispatch} from "react-redux";
 import {api} from "./axios/axios";
 import JWTRefresher from "./components/refresh/refresh";

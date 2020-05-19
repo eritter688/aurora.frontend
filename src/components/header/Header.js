@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useDispatch} from "react-redux";
 import {useHistory} from 'react-router-dom'
 import {asyncLogout} from "../../reducers/authSlice";
-import authService from "../../services/authService";
+import authService from "../../services/tokenService";
 
 const navBarStyle = {
     fontVariant: "all-small-caps",
@@ -35,12 +35,14 @@ export default function Header(props) {
     };
 
     const renderAuth = () => {
-        // const email = authService.getUserEmail();
-        const email = "eritter688@gmail.com";
+        const email = authService.getUserEmail();
         const title = "Welcome: " + email;
         return (
             <Nav className={"ml-auto"}>
                 <NavDropdown title={title} id={"drop"}>
+                    <NavDropdown.Item href={"/clients/"}>Clients</NavDropdown.Item>
+                    <NavDropdown.Item href={"/lessons/"}>Lessons</NavDropdown.Item>
+                    <NavDropdown.Divider/>
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                     <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
                 </NavDropdown>
