@@ -6,7 +6,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useDispatch} from "react-redux";
 import {useHistory} from 'react-router-dom'
-import {asyncLogout} from "../../reducers/authSlice";
+import {asyncLogout} from "../../slices/authSlice";
 import authService from "../../services/tokenService";
 
 const navBarStyle = {

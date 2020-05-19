@@ -4,6 +4,7 @@ import authService from "../services/tokenService";
 import IndexContainer from "../pages";
 import LoginContainer from "../pages/login";
 import DashboardContainer from "../pages/secure/dashboard";
+import ClientContainer from "../pages/secure/clients";
 import AboutContainer from "../pages/about";
 import TermsContainer from "../pages/terms";
 
@@ -34,6 +35,7 @@ export default function Router() {
     return (
         <Switch>
             <PrivateRoute exact path={"/dashboard/"} component={DashboardContainer}/>
+            <PrivateRoute exact path={"/clients/"} component={ClientContainer}/>
             <Route exact path={"/about/"} component={AboutContainer}/>
             <Route exact path={"/login/"} component={LoginContainer}/>
             <Route exact path={"/terms/"} component={TermsContainer}/>

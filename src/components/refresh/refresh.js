@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
-import {asyncRefresh} from "../../reducers/authSlice";
+import {asyncRefresh} from "../../slices/authSlice";
 import authService from "../../services/tokenService";
 
 // TODO

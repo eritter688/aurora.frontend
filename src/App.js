@@ -7,7 +7,7 @@ import authService from './services/tokenService';
 import {useDispatch} from "react-redux";
 import {api} from "./axios/axios";
 import JWTRefresher from "./components/refresh/refresh";
-import {asyncLogout} from "./reducers/authSlice";
+import {asyncLogout} from "./slices/authSlice";
 import {useHistory} from "react-router";
 
 export default function App(props) {

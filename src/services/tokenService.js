@@ -1,5 +1,5 @@
 import jwt_decode from 'jwt-decode';
-import {asyncRefresh} from '../reducers/authSlice'
+import {asyncRefresh} from '../slices/authSlice'
 
 const hasAccessToken = () => {
     return !!localStorage.getItem('accessToken');

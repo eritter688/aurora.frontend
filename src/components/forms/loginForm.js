@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button'
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux'
 import {useHistory} from 'react-router-dom'
-import {asyncLogin} from '../../reducers/authSlice'
+import {asyncLogin} from '../../slices/authSlice'
 
 const formContainerStyle = {
     fontVariant: "all-small-caps",
