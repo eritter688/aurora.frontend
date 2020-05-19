@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useDispatch} from "react-redux";
 import {useHistory} from 'react-router-dom'
 import {asyncLogout} from "../../reducers/authSlice";
+import authService from "../../services/authService";
 
 
 const navBarStyle = {
@@ -30,9 +31,11 @@ export default function AuroraNavBar(props) {
     };
 
     const renderAuth = () => {
+        const email = authService.getUserEmail();
+        const title = "Welcome: " + email;
         return (
             <Nav className={"ml-auto"}>
-                <NavDropdown title="Welcome: eritter688@gmail.com" id={"drop"}>
+                <NavDropdown title={title} id={"drop"}>
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                     <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
                 </NavDropdown>

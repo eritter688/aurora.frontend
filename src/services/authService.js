@@ -82,4 +82,7 @@ export default {
     hasTokenExpired,
     hasAuthTokens,
     checkAuth,
+    getUserID,
+    getUserName,
+    getUserEmail,
 };
