@@ -32,6 +32,9 @@ export default function ClientContainer() {
 
             <Button>Add/New/+</Button>
 
+            {/*// TODO */}
+            {/*// Take header keys as array*/}
+            {/*// Take item keys as array*/}
             <Table striped bordered hover>
                 <thead>
                 <tr>
