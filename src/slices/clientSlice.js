@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {api} from '../axios/axios'
+import {counterSlice} from "../features/counter/counterSlice";
 
 // TODO
 // 0 clients
@@ -27,19 +28,50 @@ export const getAllClients = createAsyncThunk(
     }
 );
 
-export const clientSlice = createSlice({
-        name: "client",
-        initialState: {
-            // TODO
-            // This is super generic, can it be pulled upward?
-            count: 0,
-            next: "",
-            prev: "",
-            items: [],
-        },
-        reducers: {},
-        extraReducers: {},
+export const getAll = createAsyncThunk(
+    'getAll',
+    async (obj, thunkAPI) => {
+        const response = await api.get("client/");
+        console.log(response.data);
+        return response.data;
     }
 );
+export const getSingle = createAsyncThunk();
+export const createSingle = createAsyncThunk();
+export const deleteSingle = createAsyncThunk();
+export const updateSingle = createAsyncThunk();
+
+const initialState = {
+    busy: false,
+    itemCount: 0,
+    items: [],
+    previousPage: null,
+    nextPage: null,
+};
+
+export const clientSlice = createSlice({
+        name: "client",
+        initialState,
+        reducers: {
+            reset: state => initialState,
+        },
+        extraReducers: {
+            [getAll.fulfilled]: (state, action) => {
+                state.busy = false;
+                state.itemCount = action.payload.count;
+                state.items = action.payload.results;
+                state.previousPage = action.payload.previous;
+                state.nextPage = action.payload.next;
+            }
+        },
+    }
+);
+
+export const selectCount = state => state.client.itemCount;
+export const selectItems = state => state.client.items;
+export const selectPrev = state => state.client.previousPage;
+export const selectNext = state => state.client.nextPage;
+
+export const {reset} = counterSlice.actions;
 
 export default clientSlice.reducer;
