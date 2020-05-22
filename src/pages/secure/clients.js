@@ -23,6 +23,27 @@ export default function ClientContainer() {
         dispatch(getAll());
     };
 
+    const headerKeys = [
+        "First Name",
+        "Last Name",
+        "YOB",
+    ];
+
+    const itemKeys = [
+        "id",
+        "first_name",
+        "last_name",
+        "year_of_birth",
+    ];
+
+    const generateHeader = () => {
+
+    };
+
+    const generateRows = () => {
+
+    };
+
     return (
         <Page>
             <p>Client Page</p>
@@ -32,23 +53,20 @@ export default function ClientContainer() {
 
             <Button>Add/New/+</Button>
 
-            {/*// TODO */}
-            {/*// Take header keys as array*/}
-            {/*// Take item keys as array*/}
             <Table striped bordered hover>
                 <thead>
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>YOB</th>
+                    {headerKeys.map((item, index) =>
+                        <th key={index}>{item}</th>
+                    )}
                 </tr>
                 </thead>
                 <tbody>
                 {items.map(item =>
-                    <tr key={item.id}>
-                        <td>{item.first_name}</td>
-                        <td>{item.last_name}</td>
-                        <td>{item.year_of_birth}</td>
+                    <tr key={item[itemKeys[0]]}>
+                        <td>{item[itemKeys[1]]}</td>
+                        <td>{item[itemKeys[2]]}</td>
+                        <td>{item[itemKeys[3]]}</td>
                     </tr>
                 )}
                 </tbody>
