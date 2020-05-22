@@ -28,8 +28,15 @@ export const getAllClients = createAsyncThunk(
 );
 
 export const clientSlice = createSlice({
-    name: "client",
-        initialState: {},
+        name: "client",
+        initialState: {
+            // TODO
+            // This is super generic, can it be pulled upward?
+            count: 0,
+            next: "",
+            prev: "",
+            items: [],
+        },
         reducers: {},
         extraReducers: {},
     }
