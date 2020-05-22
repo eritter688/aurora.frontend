@@ -36,10 +36,12 @@ export default function ClientContainer() {
         "year_of_birth",
     ];
 
+    // from props.header [array]
     const generateHeader = () => {
-
+        return;
     };
 
+    // from props.data [array]
     const generateRows = () => {
 
     };
