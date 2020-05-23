@@ -5,7 +5,7 @@ import NavbarBrand from "react-bootstrap/NavbarBrand";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useDispatch} from "react-redux";
-import {useHistory} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import {asyncLogout} from "../../slices/authSlice";
 import authService from "../../services/tokenService";
 
@@ -40,10 +40,10 @@ export default function Header(props) {
         return (
             <Nav className={"ml-auto"}>
                 <NavDropdown title={title} id={"drop"}>
-                    <NavDropdown.Item href={"/clients/"}>Clients</NavDropdown.Item>
-                    <NavDropdown.Item href={"/lessons/"}>Lessons</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to={"/clients/"}>Clients</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to={"/lessons/"}>Lessons</NavDropdown.Item>
                     <NavDropdown.Divider/>
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to={"/profile/"}>Profile</NavDropdown.Item>
                     <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
@@ -54,10 +54,10 @@ export default function Header(props) {
         return (
             <Nav className={"ml-auto"}>
                 <Nav.Item>
-                    <Nav.Link href={""}>Register</Nav.Link>
+                    <Nav.Link as={Link} to={"/register/"}>Register</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link href={"/login/"}>Log In</Nav.Link>
+                    <Nav.Link as={Link} to={"/login/"}>Log In</Nav.Link>
                 </Nav.Item>
             </Nav>
         );
@@ -69,7 +69,7 @@ export default function Header(props) {
                 bg={"light"}
                 variant={"light"}
                 expand={"md"}>
-            <NavbarBrand href={""}>Aurora</NavbarBrand>
+            <NavbarBrand as={Link} to={"/"}>Aurora</NavbarBrand>
             <NavBar.Toggle aria-controls="responsive-navbar-nav"/>
             <NavBar.Collapse id="responsive-navbar-nav">
                 {isAuthenticated ? renderAuth() : renderNoAuth()}

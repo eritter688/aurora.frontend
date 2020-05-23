@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav"
 import NavItem from "react-bootstrap/NavItem";
+import {Link} from "react-router-dom";
 
 export default function Footer() {
 
@@ -26,19 +27,19 @@ export default function Footer() {
             <NavBar.Collapse id="responsive-navbar-nav-left">
                 <Nav className={"mr-auto"}>
                     <NavItem>
-                        <Nav.Link href={"/about/"}>About</Nav.Link>
+                        <Nav.Link as={Link} to={"/about/"}>About</Nav.Link>
                     </NavItem>
                     <NavItem>
-                        <Nav.Link href={"/terms/"}>Terms</Nav.Link>
+                        <Nav.Link as={Link} to={"/terms/"}>Terms</Nav.Link>
                     </NavItem>
                     <NavItem>
-                        <Nav.Link href={"/privacy/"}>Privacy</Nav.Link>
+                        <Nav.Link as={Link} to={"/privacy/"}>Privacy</Nav.Link>
                     </NavItem>
                     <NavItem>
-                        <Nav.Link href={"/bug/"}>Contact/Report Bug</Nav.Link>
+                        <Nav.Link as={Link} to={"/bug/"}>Contact/Report Bug</Nav.Link>
                     </NavItem>
                     <NavItem>
-                        <Nav.Link href={"/help/"}>Help</Nav.Link>
+                        <Nav.Link as={Link} to={"/help/"}>Help</Nav.Link>
                     </NavItem>
                 </Nav>
             </NavBar.Collapse>
@@ -46,7 +47,7 @@ export default function Footer() {
             <NavBar.Collapse id="responsive-navbar-nav-right">
                 <Nav className={"ml-auto"}>
                     <NavItem>
-                        <Nav.Link href={""}>{'<'}/{'>'}</Nav.Link>
+                        <Nav.Link as={Link} to={""}>{'<'}/{'>'}</Nav.Link>
                     </NavItem>
                     <NavItem>
                         <Nav.Link eventKey={"disabled"} disabled>C 2020 Aurora LLC.</Nav.Link>
