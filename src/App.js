@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from "./components/footer/footer";
+import Footer from "./components/footer/Footer";
 import Router from "./router/router";
 import authService from './services/tokenService';
 import {useDispatch} from "react-redux";
