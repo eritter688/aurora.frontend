@@ -6,8 +6,8 @@ import {useMediaQuery} from "react-responsive";
 import {Link} from "react-router-dom";
 
 // TODO
-// After all the inline CSS hacking, I still might rip this out in favor of a tack on to the body
-// footer type. Fun.
+// This is 'fine for now'. Not sure I like how it's worked up.
+// Might rip it out in the future.
 export default function Footer() {
 
     const isSmall = useMediaQuery({minDeviceWidth: 576})
