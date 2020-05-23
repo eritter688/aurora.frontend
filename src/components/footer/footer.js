@@ -2,23 +2,58 @@ import React from 'react';
 import Nav from "react-bootstrap/Nav"
 import NavBar from "react-bootstrap/Navbar";
 import NavItem from "react-bootstrap/NavItem";
+import {useMediaQuery} from "react-responsive";
 import {Link} from "react-router-dom";
 
 // TODO
-// Debating on making this a tack on footer style where it's appended to the body
-// content, as opposed to sticky on the bottom of the SPA.
+// After all the inline CSS hacking, I still might rip this out in favor of a tack on to the body
+// footer type. Fun.
 export default function Footer() {
 
-    const FooterStyle = {
+    const isSmall = useMediaQuery({minDeviceWidth: 576})
+    const isMedium = useMediaQuery({minDeviceWidth: 768})
+    const isLarge = useMediaQuery({minDeviceWidth: 992})
+    const isExtraLarge = useMediaQuery({minDeviceWidth: 1200})
+
+    const FooterXSStyle = {
         fontVariant: "all-small-caps",
-        fontSize: ".75em",
+        fontSize: ".80em",
 
         borderTopStyle: "solid",
         borderWidth: "1px",
         borderColor: "lightgray",
 
+        height: "4%",
+    };
+    const FooterSMStyle = {
+        fontSize: ".75em",
         height: "5%",
     };
+    const FooterMDStyle = {
+        fontSize: "1.10em",
+        height: "5%",
+    };
+    const FooterLGStyle = {
+        fontSize: "1.60em",
+        height: "5%",
+    };
+    const FooterXLStyle = {
+        fontSize: "1.10em",
+        height: "3%",
+    };
+
+    let FooterStyle;
+    if (isExtraLarge) {
+        FooterStyle = {...FooterXSStyle, ...FooterXLStyle};
+    } else if (isLarge) {
+        FooterStyle = {...FooterXSStyle, ...FooterLGStyle};
+    } else if (isMedium) {
+        FooterStyle = {...FooterXSStyle, ...FooterMDStyle};
+    } else if (isSmall) {
+        FooterStyle = {...FooterXSStyle, ...FooterSMStyle}
+    } else {
+        FooterStyle = FooterXSStyle;
+    }
 
     return (
         <NavBar style={FooterStyle}
