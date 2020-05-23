@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav"
 import NavItem from "react-bootstrap/NavItem";
 import {Link} from "react-router-dom";
 
+
 export default function Footer() {
 
     // TODO
@@ -43,17 +44,14 @@ export default function Footer() {
                     </NavItem>
                 </Nav>
             </NavBar.Collapse>
-            <NavBar.Toggle aria-controls="responsive-navbar-nav-right"/>
-            <NavBar.Collapse id="responsive-navbar-nav-right">
-                <Nav className={"ml-auto"}>
-                    <NavItem>
-                        <Nav.Link as={Link} to={""}>{'<'}/{'>'}</Nav.Link>
-                    </NavItem>
-                    <NavItem>
-                        <Nav.Link eventKey={"disabled"} disabled>C 2020 Aurora LLC.</Nav.Link>
-                    </NavItem>
-                </Nav>
-            </NavBar.Collapse>
+            <Nav className={"ml-auto"}>
+                <NavItem>
+                    <Nav.Link as={Link} to={"/api/"}>{'<'}/{'>'}</Nav.Link>
+                </NavItem>
+                <NavItem>
+                    <Nav.Link eventKey={"disabled"} disabled>C 2020 Aurora LLC.</Nav.Link>
+                </NavItem>
+            </Nav>
         </NavBar>
     );
 
