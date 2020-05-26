@@ -6,7 +6,7 @@ import Router from "./router/router";
 import authService from './services/tokenService';
 import {useDispatch} from "react-redux";
 import {api} from "./axios/axios";
-import {asyncLogout} from "./slices/authSlice";
+import {asyncLogout, asyncRefresh} from "./slices/authSlice";
 import {useHistory} from "react-router";
 
 export default function App(props) {
@@ -30,9 +30,12 @@ export default function App(props) {
         return response;
     }, function (error) {
         if (error.response.status === 401 && authService.hasValidRefreshToken()) {
-            // dispatch async refresh and then refire original request with updated tokens
+            dispatch(asyncRefresh()).then(() => {
+                // refire original request.
+            })
         } else if (error.response.status === 401 && !authService.hasValidRefreshToken()) {
             dispatch(asyncLogout()).then(() => {
+                // do we need to clear entire redux store here?
                 history.push("/login/");
             })
         } else {
