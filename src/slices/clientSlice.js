@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {api} from '../axios/axios'
-import {counterSlice} from "../features/counter/counterSlice";
 
 // TODO
 // 0 clients
@@ -72,6 +71,6 @@ export const selectItems = state => state.client.items;
 export const selectPrev = state => state.client.previousPage;
 export const selectNext = state => state.client.nextPage;
 
-export const {reset} = counterSlice.actions;
+export const {reset} = clientSlice.actions;
 
 export default clientSlice.reducer;
