@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from "./components/footer/Footer";
-import Router from "./router/router";
 import authService from './services/tokenService';
 import {useDispatch} from "react-redux";
 import {api} from "./axios/axios";
 import {asyncLogout, asyncRefresh} from "./slices/authSlice";
 import {useHistory} from "react-router";
+import PublicHeader from "./components/header/PublicHeader";
 
 export default function App(props) {
 
@@ -44,11 +43,15 @@ export default function App(props) {
         return Promise.reject(error);
     });
 
+    // return (
+    //     <div className={"App"}>
+    //         <Router/>
+    //         <Footer/>
+    //     </div>
+    // );
+
     return (
-        <div className={"App"}>
-            <Router/>
-            <Footer/>
-        </div>
+        <PublicHeader/>
     );
 
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../header/Header";
+import PublicHeader from "../header/PublicHeader";
 
 const bodyStyle = {
     paddingTop: "5rem",
@@ -11,7 +11,7 @@ const bodyStyle = {
 export default function Page(props) {
     return (
         <>
-            <Header/>
+            <PublicHeader/>
             <div style={bodyStyle}>
                 {props.children}
             </div>

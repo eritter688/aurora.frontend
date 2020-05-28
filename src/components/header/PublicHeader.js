@@ -1,61 +1,78 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import {Link} from "react-router-dom";
+import './header.css'
 
-
-const navBarStyle2 = {
-    fontVariant: "all-small-caps",
-    borderBottomStyle: "solid",
-    borderWidth: "1px",
-    borderColor: "lightgray",
-    minHeight: "5vh",
-
-    display: "flex",
-    // justifyContent: "center",
-    alignItems: "center",
-};
-
-export default function Header() {
-
-    const userName = "Eric";
-    const userEmail = "eritter688@gmail.com";
-    const isAuthenticated = false;
-
-    const NavLeft = () => {
-
-        const style = {
-            alignSelf: "flex-start",
-        };
-
-        return (
-            <div style={style}>Aurora</div>
-        );
-    };
-
-    const rightStyle = {
-        alignSelf: "flex-end",
-    };
-
-    const navRightNoAuth = () => {
-        return (
-            <div style={rightStyle}>NO AUTH</div>
-        );
-    };
-
-    const navRightAuth = () => {
-        return (
-            <div style={rightStyle}>AUTH</div>
-        );
-    };
+export default function PublicHeader() {
 
     return (
-        <div style={navBarStyle2}>
-            <NavLeft/>
-            {isAuthenticated ? navRightAuth() : navRightNoAuth()}
+        <div id={"nav-header"} className={"nav-header"}>
+            <Link to={"/home/"}>
+                <img src={"https://via.placeholder.com/50"} alt={"placeholder"}/>
+            </Link>
+            <nav>
+                <ul>
+                    <li><Link to={"/login/"} className={"nav-header-button"}>Login</Link></li>
+                    <li><Link to={"/register/"} className={"nav-header-button"}>Signup</Link></li>
+                </ul>
+            </nav>
         </div>
     )
-
-
 }
+
+
+// const navBarStyle2 = {
+//     fontVariant: "all-small-caps",
+//     borderBottomStyle: "solid",
+//     borderWidth: "1px",
+//     borderColor: "lightgray",
+//     minHeight: "5vh",//
+//     display: "flex",
+//     // justifyContent: "center",
+//     alignItems: "center",
+// };
+//
+// export default function PublicHeader() {
+//
+//     const userName = "Eric";
+//     const userEmail = "eritter688@gmail.com";
+//     const isAuthenticated = false;
+//
+//     const NavLeft = () => {
+//
+//         const style = {
+//             alignSelf: "flex-start",
+//         };
+//
+//         return (
+//             <div style={style}>Aurora</div>
+//         );
+//     };
+//
+//     const rightStyle = {
+//         alignSelf: "flex-end",
+//     };
+//
+//     const navRightNoAuth = () => {
+//         return (
+//             <div style={rightStyle}>NO AUTH</div>
+//         );
+//     };
+//
+//     const navRightAuth = () => {
+//         return (
+//             <div style={rightStyle}>AUTH</div>
+//         );
+//     };
+//
+//     return (
+//         <div style={navBarStyle2}>
+//             <NavLeft/>
+//             {isAuthenticated ? navRightAuth() : navRightNoAuth()}
+//         </div>
+//     )
+//
+//
+// }
 
 // const navBarStyle = {
 //     fontVariant: "all-small-caps",
@@ -67,7 +84,7 @@ export default function Header() {
 //
 //
 //
-// export default function Header(props) {
+// export default function PublicHeader(props) {
 //
 //     const dispatch = useDispatch();
 //     const history = useHistory();
