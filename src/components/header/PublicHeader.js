@@ -1,23 +1,42 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import './header.css'
+import {useMediaQuery} from 'react-responsive'
 
 export default function PublicHeader() {
 
+    const XS = useMediaQuery({minWidth: 0, maxWidth: 576})
+    const SM = useMediaQuery({minWidth: 576, maxWidth: 768})
+    const MD = useMediaQuery({minWidth: 768, maxWidth: 992})
+    const LG = useMediaQuery({minWidth: 992, maxWidth: 1200})
+    const XL = useMediaQuery({minWidth: 1200})
+    const mediaPosition = {
+        position: "absolute",
+        zIndex: "1001",
+    }
+
     return (
-        <div id={"nav-header"} className={"nav-header"}>
-            <div id={"nav-header-logo"} className={"nav-header-logo"}>
-                <Link to={"/home/"}>
-                    <img src={"https://via.placeholder.com/100x60"} alt={"placeholder"}/>
-                </Link>
+        <>
+            <div id={"nav-header"} className={"nav-header"}>
+                <div id={"nav-header-logo"} className={"nav-header-logo"}>
+                    <Link to={"/home/"}>
+                        <img src={"https://via.placeholder.com/100x60"} alt={"placeholder"}/>
+                    </Link>
+                </div>
+                <nav>
+                    <ul>
+                        <li><Link to={"/login/"} className={"nav-header-button"}>Login</Link></li>
+                        <li><Link to={"/register/"} className={"nav-header-button"}>Signup</Link></li>
+                    </ul>
+                </nav>
             </div>
-            <nav>
-                <ul>
-                    <li><Link to={"/login/"} className={"nav-header-button"}>Login</Link></li>
-                    <li><Link to={"/register/"} className={"nav-header-button"}>Signup</Link></li>
-                </ul>
-            </nav>
-        </div>
+            {/*just floating showing us size*/}
+            {XS && <span style={mediaPosition}>XS</span>}
+            {SM && <span style={mediaPosition}>SM</span>}
+            {MD && <span style={mediaPosition}>MD</span>}
+            {LG && <span style={mediaPosition}>LG</span>}
+            {XL && <span style={mediaPosition}>XL</span>}
+        </>
     );
 }
 
