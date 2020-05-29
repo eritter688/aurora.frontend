@@ -6,9 +6,11 @@ export default function PublicHeader() {
 
     return (
         <div id={"nav-header"} className={"nav-header"}>
-            <Link to={"/home/"}>
-                <img src={"https://via.placeholder.com/50"} alt={"placeholder"}/>
-            </Link>
+            <div id={"nav-header-logo"} className={"nav-header-logo"}>
+                <Link to={"/home/"}>
+                    <img src={"https://via.placeholder.com/100x60"} alt={"placeholder"}/>
+                </Link>
+            </div>
             <nav>
                 <ul>
                     <li><Link to={"/login/"} className={"nav-header-button"}>Login</Link></li>
@@ -16,7 +18,7 @@ export default function PublicHeader() {
                 </ul>
             </nav>
         </div>
-    )
+    );
 }
 
 
