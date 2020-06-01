@@ -5,6 +5,7 @@ import {api} from "./axios/axios";
 import {asyncLogout, asyncRefresh} from "./slices/authSlice";
 import {useHistory} from "react-router";
 import PublicHeader from "./components/header/PublicHeader";
+import LandingPage from "./pages/public/landing/landing";
 
 export default function App(props) {
 
@@ -49,7 +50,10 @@ export default function App(props) {
     // );
 
     return (
-        <PublicHeader/>
+        <>
+            <PublicHeader/>
+            <LandingPage/>
+        </>
     );
 
 }
